@@ -9,12 +9,11 @@
 :root{--orange:#E05C10;--odim:rgba(224,92,16,0.11);--obrd:rgba(224,92,16,0.26);--bg:#F2F2F2;--card:#fff;--bdr:#E0E0E0;--txt:#1A1A1A;--mid:#555;--fnt:#AAA;--ff:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;--fm:"Courier New",Courier,monospace}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%}*{-webkit-tap-highlight-color:transparent}
 body{font-family:var(--ff);background:var(--bg);color:var(--txt);font-size:15px;line-height:1.6;padding-bottom:80px}button{font-family:var(--ff);cursor:pointer}input,textarea{font-family:var(--ff);font-size:16px;-webkit-appearance:none;border-radius:0}
-
-
-
-
-65%{width:70%}100%{width:100%}}
-
+#splash{position:fixed;top:0;right:0;bottom:0;left:0;background:#fff;z-index:900;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.sp-logo{font-size:36px;font-weight:800;letter-spacing:6px;color:var(--orange)}.sp-tag{font-family:var(--fm);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--fnt)}
+.sp-track{width:100px;height:2px;background:var(--bdr);border-radius:2px;margin-top:28px;overflow:hidden}.sp-fill{height:100%;width:0;background:var(--orange);animation:spAnim 1.8s ease forwards}
+@keyframes spAnim{0%{width:0}65%{width:70%}100%{width:100%}}
+.sp-row{margin-top:20px;display:flex;align-items:center;gap:10px}.sp-av{width:36px;height:36px;border-radius:50%;border:2px solid var(--orange);background:var(--odim);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--orange)}.sp-nm{font-size:14px;font-weight:600;color:var(--txt)}.sp-ok{font-family:var(--fm);font-size:10px;color:var(--orange)}
 .topbar{background:#fff;border-bottom:2px solid var(--orange);height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 14px}.t-left{display:flex;align-items:center;gap:10px}.t-right{display:flex;align-items:center;gap:8px}
 .burger{width:36px;height:36px;background:none;border:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0}.burger span{display:block;width:22px;height:2px;background:var(--txt);border-radius:2px;transition:transform .25s,opacity .25s}.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}.burger.open span:nth-child(2){opacity:0}.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .t-brand{font-size:17px;font-weight:800;letter-spacing:4px;color:var(--orange);text-decoration:none}.t-lvl{font-family:var(--fm);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border:1.5px solid currentColor;border-radius:4px}.t-av{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--orange);background:var(--odim);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--orange)}
@@ -22,7 +21,7 @@ body{font-family:var(--ff);background:var(--bg);color:var(--txt);font-size:15px;
 .drawer{position:fixed;top:0;left:0;bottom:0;width:240px;background:#fff;border-right:1px solid var(--bdr);z-index:101;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding-top:52px}.drawer.open{transform:translateX(0)}
 .drw-hdr{font-family:var(--fm);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--fnt);padding:14px 16px 8px;border-bottom:1px solid var(--bdr)}.drw-item{display:flex;align-items:center;gap:12px;width:100%;padding:14px 16px;background:none;border:none;border-bottom:1px solid var(--bg);font-size:14px;font-weight:600;color:var(--txt);text-align:left;min-height:52px}.drw-item:active{background:var(--bg)}.drw-item.on{color:var(--orange);background:var(--odim)}.drw-ic{font-size:18px}.drw-bd{margin-left:auto;font-family:var(--fm);font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border:1px solid currentColor;border-radius:3px}
 .sh-mask{display:none;position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.4);z-index:200}.sh-mask.open{display:block}.sheet{position:fixed;bottom:0;left:0;right:0;background:#fff;border-radius:18px 18px 0 0;z-index:201;transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);max-height:75vh;overflow-y:auto}.sheet.open{transform:translateY(0)}
-.sh-handle{width:36px;height:4px;background:var(--bdr);border-radius:2px;margin:12px auto 14px}.sh-title{font-family:var(--fm);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--fnt);padding:0 16px 12px;border-bottom:1px solid var(--bdr)}.sh-user{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--bg);min-height:58px;cursor:pointer}.sh-user.on{background:var(--odim)}.sh-av{width:34px;height:34px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}.sh-info{flex:1}.sh-nm{font-size:14px;font-weight:600;color:var(--txt)}.sh-hd{font-family:var(--fm);font-size:10px;color:var(--fnt)}.sh-lv{font-family:var(--fm);font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border:1px solid currentColor;border-radius:3px;flex-shrink:0}.sh-note{font-family:var(--fm);font-size:9px;color:var(--fnt);padding:10px 16px 18px;line-height:1.6}
+.sh-handle{width:36px;height:4px;background:var(--bdr);border-radius:2px;margin:12px auto 14px;cursor:pointer}.sh-title{font-family:var(--fm);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--fnt);padding:0 16px 12px;border-bottom:1px solid var(--bdr)}.sh-user{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--bg);min-height:58px;cursor:pointer}.sh-user.on{background:var(--odim)}.sh-av{width:34px;height:34px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}.sh-info{flex:1}.sh-nm{font-size:14px;font-weight:600;color:var(--txt)}.sh-hd{font-family:var(--fm);font-size:10px;color:var(--fnt)}.sh-lv{font-family:var(--fm);font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border:1px solid currentColor;border-radius:3px;flex-shrink:0}.sh-note{font-family:var(--fm);font-size:9px;color:var(--fnt);padding:10px 16px 18px;line-height:1.6}
 .bnav{position:fixed;bottom:0;left:0;right:0;height:72px;padding-bottom:14px;background:#fff;border-top:1px solid var(--bdr);display:flex;z-index:90}.bnav-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:none;border:none;color:var(--fnt);min-height:44px;cursor:pointer}.bnav-btn.on{color:var(--orange)}.bnav-ic{font-size:19px;line-height:1}.bnav-lb{font-family:var(--fm);font-size:8px;letter-spacing:.5px;text-transform:uppercase}
 .scr{display:none}.scr.on{display:block}
 .feed-hdr{padding:14px 14px 10px;display:flex;align-items:baseline;justify-content:space-between;background:#fff;border-bottom:1px solid var(--bdr)}.feed-ttl{font-size:20px;font-weight:800;color:var(--txt)}.feed-cnt{font-family:var(--fm);font-size:10px;color:var(--fnt)}.card-list{padding:10px 12px 16px}
@@ -34,14 +33,9 @@ body{font-family:var(--ff);background:var(--bg);color:var(--txt);font-size:15px;
 </style>
 </head>
 <body>
-<div id="taptest" style="position:fixed;top:52px;left:0;right:0;background:#E05C10;color:#fff;padding:12px;text-align:center;font-size:14px;font-weight:bold;z-index:99999;cursor:pointer">
-TAP HERE TO TEST — if this turns green, taps work
-</div>
-<style>
-#taptest:active { background: #2a9d2a !important; }
-body { padding-top: 44px; }
-</style>
 
+<div id="splash">
+  <div class="sp-logo">KODES</div>
   <div class="sp-tag">Know Who Is Speaking</div>
   <div class="sp-track"><div class="sp-fill"></div></div>
   <div class="sp-row">
@@ -50,7 +44,15 @@ body { padding-top: 44px; }
   </div>
 </div>
 
-<div id="luBox"><div class="lu-inner"><div class="lu-em">&#127942;</div><div class="lu-tg">Level Up!</div><div class="lu-nm" id="luNm">Commentator</div><div class="lu-ds" id="luDs">You can now write comments.</div><button class="lu-bt" id="luBtn">Continue</button></div></div>
+<div id="luBox">
+  <div class="lu-inner">
+    <div class="lu-em">&#127942;</div>
+    <div class="lu-tg">Level Up!</div>
+    <div class="lu-nm" id="luNm">Commentator</div>
+    <div class="lu-ds" id="luDs">You can now write comments.</div>
+    <button class="lu-bt" id="luBtn">Continue</button>
+  </div>
+</div>
 
 <div class="sh-mask" id="shMask"></div>
 <div class="sheet" id="sheet">
@@ -64,10 +66,10 @@ body { padding-top: 44px; }
 <div class="drawer" id="drawer">
   <div class="drw-hdr">Topics</div>
   <button class="drw-item on" id="di-news"><span class="drw-ic">&#128240;</span>News<span class="drw-bd" id="db-news">&mdash;</span></button>
-  <button class="drw-item"    id="di-sports"><span class="drw-ic">&#9917;</span>Sports<span class="drw-bd" id="db-sports">&mdash;</span></button>
-  <button class="drw-item"    id="di-economy"><span class="drw-ic">&#128200;</span>Economy<span class="drw-bd" id="db-economy">&mdash;</span></button>
-  <button class="drw-item"    id="di-arts"><span class="drw-ic">&#127912;</span>Arts<span class="drw-bd" id="db-arts">&mdash;</span></button>
-  <button class="drw-item"    id="di-health"><span class="drw-ic">&#127973;</span>Health<span class="drw-bd" id="db-health">&mdash;</span></button>
+  <button class="drw-item" id="di-sports"><span class="drw-ic">&#9917;</span>Sports<span class="drw-bd" id="db-sports">&mdash;</span></button>
+  <button class="drw-item" id="di-economy"><span class="drw-ic">&#128200;</span>Economy<span class="drw-bd" id="db-economy">&mdash;</span></button>
+  <button class="drw-item" id="di-arts"><span class="drw-ic">&#127912;</span>Arts<span class="drw-bd" id="db-arts">&mdash;</span></button>
+  <button class="drw-item" id="di-health"><span class="drw-ic">&#127973;</span>Health<span class="drw-bd" id="db-health">&mdash;</span></button>
 </div>
 
 <div class="topbar">
@@ -81,7 +83,6 @@ body { padding-top: 44px; }
   </div>
 </div>
 
-<!-- FEED: all articles baked into HTML, JS just shows/hides sections -->
 <div id="scr-feed" class="scr on">
   <div class="feed-hdr">
     <span class="feed-ttl" id="feed-topic-header">News</span>
@@ -627,7 +628,6 @@ body { padding-top: 44px; }
   </div>
 </div>
 
-<!-- SCORE SCREEN -->
 <div id="scr-score" class="scr">
   <div class="score-pg">
     <div class="score-card">
@@ -639,7 +639,7 @@ body { padding-top: 44px; }
         </div>
         <div class="pg-row">
           <div><div class="pg-pts" id="scPts">0</div><div class="pg-lbl">points earned</div></div>
-          <div class="pg-nxt" id="scNxt">500 pts to Author</div>
+          <div class="pg-nxt" id="scNxt">400 pts to Author</div>
         </div>
         <div class="pg-track"><div class="pg-fill" id="scFill" style="width:0%"></div></div>
         <div class="pg-note" id="scNote">Interact with content to earn points.</div>
@@ -651,14 +651,12 @@ body { padding-top: 44px; }
   </div>
 </div>
 
-<!-- GUIDE SCREEN -->
 <div id="scr-guide" class="scr"><div class="guide-pg" id="guidePg"></div></div>
 
-<!-- BOTTOM NAV -->
 <div class="bnav">
   <button class="bnav-btn on" id="bn-feed"><span class="bnav-ic">&#128240;</span><span class="bnav-lb">Feed</span></button>
-  <button class="bnav-btn"    id="bn-score"><span class="bnav-ic">&#11088;</span><span class="bnav-lb">Score</span></button>
-  <button class="bnav-btn"    id="bn-guide"><span class="bnav-ic">&#128203;</span><span class="bnav-lb">Guide</span></button>
+  <button class="bnav-btn" id="bn-score"><span class="bnav-ic">&#11088;</span><span class="bnav-lb">Score</span></button>
+  <button class="bnav-btn" id="bn-guide"><span class="bnav-ic">&#128203;</span><span class="bnav-lb">Guide</span></button>
 </div>
 
 <div id="toast"></div>
@@ -1030,8 +1028,8 @@ function goScr(name) {
 
 /* ── FEED ── */
 function closeAllCards() {
-  document.querySelectorAll(".card-body.on, .card-body.open").forEach(function(e){e.classList.remove("on","open");});
-  document.querySelectorAll(".iz-wrap.on, .iz-wrap.open").forEach(function(e){e.classList.remove("on","open"); e.innerHTML="";});
+  document.querySelectorAll(".card-body.on").forEach(function(e){e.classList.remove("on");});
+  document.querySelectorAll(".iz-wrap.on").forEach(function(e){e.classList.remove("on"); e.innerHTML="";});
   document.querySelectorAll(".c-rbtn").forEach(function(b){b.textContent="Read";});
 }
 function renderFeed_DISABLED() {
@@ -1416,29 +1414,17 @@ function renderGuide() {
 
 /* ── INIT ── */
 window.onload = function() {
-  // Simplest possible test - direct getElementById + addEventListener
-  var tb = document.getElementById("taptest");
-  if (tb) {
-    tb.addEventListener("click", function() {
-      tb.style.background = "#2a9d2a";
-      tb.textContent = "TAPS WORK! JS addEventListener is working.";
-    });
-    tb.addEventListener("touchstart", function() {
-      tb.style.background = "#2a9d2a";
-      tb.textContent = "TAPS WORK via touchstart!";
-    });
-  } else {
-    // taptest not found - show alert
-    document.body.style.border = "10px solid red";
-  }
   initStore();
   updateTopbar();
   updateDrawer();
   renderFeed();
   renderGuide();
-  
 
-  // ── Attach ALL event handlers via addEventListener (no inline onclick) ──
+  // Dismiss splash
+  setTimeout(function(){
+    var s=document.getElementById("splash");
+    if(s){ s.style.display="none"; }
+  }, 1900);
 
   // Burger
   var burger = document.getElementById("burger");
@@ -1454,7 +1440,7 @@ window.onload = function() {
     if (btn) btn.addEventListener("click", (function(tp){ return function(){ pickTopic(tp); }; })(t));
   });
 
-  // User avatar / sheet
+  // User avatar
   var tAv = document.getElementById("tAv");
   if (tAv) tAv.addEventListener("click", openSheet);
 
@@ -1462,11 +1448,7 @@ window.onload = function() {
   var shMask = document.getElementById("shMask");
   if (shMask) shMask.addEventListener("click", closeSheet);
 
-  // Sheet handle tap to close
-  var shHandle = document.getElementById("shHandle");
-  if (shHandle) shHandle.addEventListener("click", closeSheet);
-
-  // Level-up close button
+  // Level-up close
   var luBtn = document.getElementById("luBtn");
   if (luBtn) luBtn.addEventListener("click", closeLU);
 
@@ -1478,7 +1460,7 @@ window.onload = function() {
   if (btnScore) btnScore.addEventListener("click", function(){ goScr("score"); });
   if (btnGuide) btnGuide.addEventListener("click", function(){ goScr("guide"); });
 
-  // Article cards — attach to every card-titles and c-rbtn
+  // Article cards
   document.querySelectorAll(".card-titles").forEach(function(el) {
     var card = el.parentNode;
     var iz   = card ? card.querySelector(".iz-wrap") : null;
@@ -1493,14 +1475,10 @@ window.onload = function() {
 
 function renderFeed() {
   var lbl = topic.charAt(0).toUpperCase() + topic.slice(1);
-  var feedScr = document.getElementById("scr-feed");
-  if (!feedScr) return;
-  // Show/hide topic sections
   ["news","sports","economy","arts","health"].forEach(function(t) {
     var sec = document.getElementById("section-" + t);
     if (sec) sec.style.display = (t === topic) ? "block" : "none";
   });
-  // Update header
   var hdr = document.getElementById("feed-topic-header");
   if (hdr) hdr.textContent = lbl;
   var cnt = document.getElementById("feed-topic-count");
