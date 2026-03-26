@@ -1,1 +1,1731 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>SBOC/Kodes</title>
+<style>
+:root{
+  --blue:#003B6F;
+  --bluedim:rgba(0,59,111,0.09);
+  --bluebrd:rgba(0,59,111,0.22);
+  --orange:#E05C10;
+  --odim:rgba(224,92,16,0.11);
+  --obrd:rgba(224,92,16,0.26);
+  --bg:#F0F2F5;
+  --card:#fff;
+  --bdr:#E0E0E0;
+  --txt:#1A1A1A;
+  --mid:#555;
+  --fnt:#AAA;
+  --ff:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --fm:"Courier New",Courier,monospace
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+*{-webkit-tap-highlight-color:transparent}
+body{font-family:var(--ff);background:var(--bg);color:var(--txt);font-size:15px;line-height:1.6;padding-bottom:80px}
+button{font-family:var(--ff);cursor:pointer}
+input,textarea{font-family:var(--ff);font-size:16px;-webkit-appearance:none;border-radius:0}
 
+/* ── SPLASH ── */
+#splash{position:fixed;top:0;right:0;bottom:0;left:0;background:#fff;z-index:900;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.sp-logo{font-size:28px;font-weight:800;letter-spacing:4px;color:var(--blue)}
+.sp-slash{font-size:28px;font-weight:300;color:var(--orange);margin:0 2px}
+.sp-kodes{font-size:28px;font-weight:800;letter-spacing:4px;color:var(--orange)}
+.sp-tag{font-family:var(--fm);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--fnt)}
+.sp-track{width:100px;height:2px;background:var(--bdr);border-radius:2px;margin-top:28px;overflow:hidden}
+.sp-fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--orange));animation:spAnim 1.8s ease forwards}
+@keyframes spAnim{0%{width:0}65%{width:70%}100%{width:100%}}
+.sp-row{margin-top:20px;display:flex;align-items:center;gap:10px}
+.sp-av{width:36px;height:36px;border-radius:50%;border:2px solid var(--blue);background:var(--bluedim);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--blue)}
+.sp-nm{font-size:14px;font-weight:600;color:var(--txt)}
+.sp-ok{font-family:var(--fm);font-size:10px;color:var(--blue)}
+
+/* ── LEVEL-UP ── */
+#luBox{display:none;position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.55);z-index:800;align-items:center;justify-content:center}
+#luBox.on{display:flex}
+.lu-inner{background:#fff;border-radius:16px;padding:28px 22px;text-align:center;width:calc(100vw - 44px);max-width:310px;border-top:4px solid var(--orange)}
+.lu-em{font-size:34px;margin-bottom:6px}
+.lu-tg{font-family:var(--fm);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:5px}
+.lu-nm{font-size:26px;font-weight:800;color:var(--txt);margin-bottom:5px}
+.lu-ds{font-size:13px;color:var(--mid);margin-bottom:18px;line-height:1.5}
+.lu-bt{padding:11px 26px;background:var(--orange);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;min-height:44px;cursor:pointer}
+
+/* ── DRAWER ── */
+.drw-mask{display:none;position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.35);z-index:100}
+.drw-mask.open{display:block}
+.drawer{position:fixed;top:0;left:0;bottom:0;width:250px;background:#fff;border-right:1px solid var(--bdr);z-index:101;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding-top:52px}
+.drawer.open{transform:translateX(0)}
+.drw-hdr{font-family:var(--fm);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--fnt);padding:14px 16px 8px;border-bottom:1px solid var(--bdr)}
+.drw-brand{display:flex;align-items:center;gap:6px;padding:12px 16px;border-bottom:1px solid var(--bdr)}
+.drw-brand-sboc{font-size:13px;font-weight:800;letter-spacing:2px;color:var(--blue)}
+.drw-brand-sep{color:var(--fnt);font-weight:300}
+.drw-brand-kodes{font-size:13px;font-weight:800;letter-spacing:2px;color:var(--orange)}
+.drw-item{display:flex;align-items:center;gap:12px;width:100%;padding:14px 16px;background:none;border:none;border-bottom:1px solid var(--bg);font-size:14px;font-weight:600;color:var(--txt);text-align:left;min-height:52px}
+.drw-item:active{background:var(--bg)}
+.drw-item.on{color:var(--blue);background:var(--bluedim)}
+.drw-ic{font-size:18px}
+.drw-bd{margin-left:auto;font-family:var(--fm);font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border:1px solid currentColor;border-radius:3px}
+
+/* ── TOPBAR ── */
+.topbar{background:#fff;border-bottom:3px solid var(--blue);height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 14px}
+.t-left{display:flex;align-items:center;gap:10px}
+.t-right{display:flex;align-items:center;gap:8px}
+.burger{width:36px;height:36px;background:none;border:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0}
+.burger span{display:block;width:22px;height:2px;background:var(--txt);border-radius:2px;transition:transform .25s,opacity .25s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.t-brand{display:flex;align-items:center;gap:4px;text-decoration:none}
+.t-brand-sboc{font-size:15px;font-weight:800;letter-spacing:3px;color:var(--blue)}
+.t-brand-sep{font-size:13px;font-weight:300;color:var(--fnt)}
+.t-brand-kodes{font-size:15px;font-weight:800;letter-spacing:3px;color:var(--orange)}
+.t-lvl{font-family:var(--fm);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border:1.5px solid currentColor;border-radius:4px}
+.t-av{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--blue);background:var(--bluedim);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--blue)}
+
+/* ── USER SHEET ── */
+.sh-mask{display:none;position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.4);z-index:200}
+.sh-mask.open{display:block}
+.sheet{position:fixed;bottom:0;left:0;right:0;background:#fff;border-radius:18px 18px 0 0;z-index:201;transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);max-height:75vh;overflow-y:auto}
+.sheet.open{transform:translateY(0)}
+.sh-handle{width:36px;height:4px;background:var(--bdr);border-radius:2px;margin:12px auto 14px;cursor:pointer}
+.sh-title{font-family:var(--fm);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--fnt);padding:0 16px 12px;border-bottom:1px solid var(--bdr)}
+.sh-user{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--bg);min-height:58px;cursor:pointer}
+.sh-user.on{background:var(--bluedim)}
+.sh-av{width:34px;height:34px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.sh-info{flex:1}
+.sh-nm{font-size:14px;font-weight:600;color:var(--txt)}
+.sh-hd{font-family:var(--fm);font-size:10px;color:var(--fnt)}
+.sh-lv{font-family:var(--fm);font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border:1px solid currentColor;border-radius:3px;flex-shrink:0}
+.sh-note{font-family:var(--fm);font-size:9px;color:var(--fnt);padding:10px 16px 18px;line-height:1.6}
+
+/* ── BOTTOM NAV ── */
+.bnav{position:fixed;bottom:0;left:0;right:0;height:72px;padding-bottom:14px;background:#fff;border-top:1px solid var(--bdr);display:flex;z-index:90}
+.bnav-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:none;border:none;color:var(--fnt);min-height:44px;cursor:pointer}
+.bnav-btn.on{color:var(--blue)}
+.bnav-ic{font-size:19px;line-height:1}
+.bnav-lb{font-family:var(--fm);font-size:8px;letter-spacing:.5px;text-transform:uppercase}
+
+/* ── SCREENS ── */
+.scr{display:none}.scr.on{display:block}
+
+/* ── FEED ── */
+.feed-hdr{padding:14px 14px 10px;display:flex;align-items:baseline;justify-content:space-between;background:#fff;border-bottom:1px solid var(--bdr)}
+.feed-ttl{font-size:20px;font-weight:800;color:var(--txt)}
+.feed-cnt{font-family:var(--fm);font-size:10px;color:var(--fnt)}
+.card-list{padding:10px 12px 16px}
+
+/* ── ARTICLE CARD ── */
+.acard{background:var(--card);border-radius:10px;border:1px solid var(--bdr);margin-bottom:10px;overflow:hidden}
+.card-meta{display:flex;align-items:center;gap:7px;margin-bottom:7px;flex-wrap:wrap;padding:13px 13px 0}
+.c-tag{font-family:var(--fm);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);background:var(--bluedim);border:1px solid var(--bluebrd);padding:2px 7px;border-radius:3px}
+.c-by{font-family:var(--fm);font-size:9px;color:var(--fnt)}
+.c-by b{color:var(--mid)}
+.c-alvl{font-family:var(--fm);font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 6px;border:1px solid currentColor;border-radius:3px}
+.c-time{font-family:var(--fm);font-size:9px;color:var(--fnt);margin-left:auto}
+.card-titles{padding:6px 13px 10px;cursor:pointer}
+.card-titles:active{background:var(--bg)}
+.c-ttl{font-size:16px;font-weight:700;color:var(--txt);line-height:1.3;margin-bottom:5px}
+.c-dck{font-size:13px;color:var(--mid);line-height:1.65}
+.card-foot{padding:9px 13px;border-top:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between}
+.c-stats{display:flex;gap:12px}
+.c-stat{font-family:var(--fm);font-size:10px;color:var(--fnt)}
+.c-rbtn{font-family:var(--fm);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange);background:var(--odim);border:1px solid var(--obrd);padding:7px 13px;border-radius:6px;min-height:36px;cursor:pointer}
+.card-body{display:none;padding:13px;border-top:1px solid var(--bdr);background:#fafafa}
+.card-body.on{display:block}
+.card-body p{font-size:14px;color:var(--txt);line-height:1.8;margin-bottom:12px}
+.card-body p:last-child{margin:0}
+.iz-wrap{display:none}.iz-wrap.on{display:block}
+
+/* ── SCORE ── */
+.score-pg{padding:14px 12px}
+.score-card{background:#fff;border-radius:10px;border:1px solid var(--bdr);overflow:hidden;margin-bottom:12px}
+.sc-hdr{padding:11px 14px;background:var(--bluedim);border-bottom:1px solid var(--bluebrd);display:flex;align-items:center;justify-content:space-between}
+.sc-ttl{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--blue)}
+.sc-top{font-family:var(--fm);font-size:9px;color:var(--blue);letter-spacing:1px;text-transform:uppercase}
+.sc-body{padding:14px}
+.lvl-hero{display:flex;align-items:center;gap:14px;padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--bdr)}
+.lvl-ring{width:54px;height:54px;border-radius:50%;border:3px solid currentColor;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lvl-ri{font-size:11px;font-weight:800;letter-spacing:1px;text-align:center}
+.lvl-nm{font-size:20px;font-weight:800}
+.lvl-sb{font-family:var(--fm);font-size:9px;color:var(--fnt);margin-top:2px}
+.pg-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.pg-pts{font-size:26px;font-weight:800;color:var(--orange)}
+.pg-lbl{font-family:var(--fm);font-size:9px;color:var(--fnt)}
+.pg-nxt{font-family:var(--fm);font-size:10px;color:var(--mid);text-align:right}
+.pg-track{height:6px;background:var(--bdr);border-radius:3px;overflow:hidden;margin-bottom:5px}
+.pg-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--blue),var(--orange));transition:width .5s ease}
+.pg-note{font-family:var(--fm);font-size:9px;color:var(--fnt)}
+.log-ttl{font-family:var(--fm);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin:12px 0 7px}
+.log-list{display:flex;flex-direction:column;gap:4px}
+.log-row{display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--bg);border-radius:6px}
+.log-act{font-family:var(--fm);font-size:9px;color:var(--mid)}
+.log-pts{font-size:12px;font-weight:800;color:var(--orange)}
+.log-mt{font-family:var(--fm);font-size:10px;color:var(--fnt);padding:5px 0}
+.all-card{background:#fff;border-radius:10px;border:1px solid var(--bdr);overflow:hidden;margin-bottom:12px}
+.all-hdr{padding:9px 13px;background:var(--bg);border-bottom:1px solid var(--bdr);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid)}
+.all-row{display:flex;align-items:center;gap:9px;padding:9px 13px;border-bottom:1px solid var(--bg)}
+.all-row:last-child{border-bottom:none}
+.all-rnm{font-size:12px;font-weight:600;color:var(--txt);width:80px;flex-shrink:0}
+.all-trk{flex:1;height:4px;background:var(--bdr);border-radius:2px;overflow:hidden}
+.all-fil{height:100%;border-radius:2px;transition:width .4s ease}
+.all-lv{font-family:var(--fm);font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;width:80px;text-align:right;flex-shrink:0}
+
+/* ── GUIDE ── */
+.guide-pg{padding:14px 12px}
+.gcard{background:#fff;border-radius:10px;border:1px solid var(--bdr);overflow:hidden;margin-bottom:10px}
+.gc-hdr{padding:11px 13px;display:flex;align-items:center;gap:9px;border-bottom:1px solid var(--bdr)}
+.gc-pip{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.gc-nm{font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+.gc-ul{font-family:var(--fm);font-size:9px;color:var(--fnt);margin-left:auto}
+.gc-body{padding:10px 13px 13px}
+.gc-desc{font-size:13px;color:var(--mid);margin-bottom:9px;line-height:1.55}
+.gc-act{display:flex;justify-content:space-between;align-items:center;padding:5px 9px;background:var(--bg);border-radius:6px;margin-bottom:4px}
+.gc-anm{font-size:12px;color:var(--txt)}
+.gc-apt{font-family:var(--fm);font-size:10px;font-weight:700;color:var(--orange)}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:70px;left:14px;right:14px;background:#fff;color:var(--txt);padding:11px 14px;border-radius:9px;font-family:var(--fm);font-size:12px;border-left:3px solid var(--orange);box-shadow:0 4px 18px rgba(0,0,0,.12);z-index:700;opacity:0;transform:translateY(8px);transition:all .25s ease;pointer-events:none}
+#toast.on{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+  <div style="display:flex;align-items:center">
+    <span class="sp-logo">SBOC</span>
+    <span class="sp-slash">&thinsp;/&thinsp;</span>
+    <span class="sp-kodes">Kodes</span>
+  </div>
+  <div class="sp-tag">Saiba Quem Está Falando</div>
+  <div class="sp-track"><div class="sp-fill"></div></div>
+  <div class="sp-row">
+    <div class="sp-av" id="spAv">CF</div>
+    <div>
+      <div class="sp-nm" id="spNm">Dr. Cid</div>
+      <div class="sp-ok">✓ Verificado</div>
+    </div>
+  </div>
+</div>
+
+<!-- LEVEL-UP OVERLAY -->
+<div id="luBox">
+  <div class="lu-inner">
+    <div class="lu-em">🏅</div>
+    <div class="lu-tg">Novo Nível</div>
+    <div class="lu-nm" id="luNm">Author</div>
+    <div class="lu-ds" id="luDs">Você pode agora publicar artigos.</div>
+    <button class="lu-bt" id="luBtn">Continuar →</button>
+  </div>
+</div>
+
+<!-- DRAWER MASK -->
+<div class="drw-mask" id="drwMask"></div>
+
+<!-- DRAWER -->
+<div class="drawer" id="drawer">
+  <div class="drw-brand">
+    <span class="drw-brand-sboc">SBOC</span>
+    <span class="drw-brand-sep">/</span>
+    <span class="drw-brand-kodes">Kodes</span>
+  </div>
+  <div class="drw-hdr">Verticais</div>
+  <button class="drw-item on" id="di-pesquisa">
+    <span class="drw-ic">🔬</span>Pesquisa Clínica
+    <span class="drw-bd" id="db-pesquisa">&mdash;</span>
+  </button>
+  <button class="drw-item" id="di-mulheres">
+    <span class="drw-ic">♀</span>Mulheres na Oncologia
+    <span class="drw-bd" id="db-mulheres">&mdash;</span>
+  </button>
+  <button class="drw-item" id="di-diversidade">
+    <span class="drw-ic">🌈</span>Diversidade na Oncologia
+    <span class="drw-bd" id="db-diversidade">&mdash;</span>
+  </button>
+  <button class="drw-item" id="di-noticias">
+    <span class="drw-ic">📣</span>Notícias &amp; Eventos
+    <span class="drw-bd" id="db-noticias">&mdash;</span>
+  </button>
+  <button class="drw-item" id="di-prevencao">
+    <span class="drw-ic">🩺</span>Prevenção &amp; Diagnóstico
+    <span class="drw-bd" id="db-prevencao">&mdash;</span>
+  </button>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="t-left">
+    <button class="burger" id="burger">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="t-brand" href="#">
+      <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;border-radius:3px">
+  <rect width="32" height="32" fill="#003B6F"/>
+  <text x="16" y="21" font-family="Arial,sans-serif" font-size="10" font-weight="800" fill="white" text-anchor="middle" letter-spacing="0.5">SBOC</text>
+</svg>
+      <span class="t-brand-sboc">SBOC</span>
+      <span class="t-brand-sep">/</span>
+      <span class="t-brand-kodes">Kodes</span>
+    </a>
+  </div>
+  <div class="t-right">
+    <span class="t-lvl" id="tLvl">Author</span>
+    <div class="t-av" id="tAv">CF</div>
+  </div>
+</div>
+
+<!-- USER SHEET MASK -->
+<div class="sh-mask" id="shMask"></div>
+
+<!-- USER SHEET -->
+<div class="sheet" id="sheet">
+  <div class="sh-handle" id="shHandle"></div>
+  <div class="sh-title">Trocar Usuário</div>
+
+  <div class="sh-user on" id="su-cid">
+    <div class="sh-av" style="color:#E05C10;border-color:#E05C10">CF</div>
+    <div class="sh-info">
+      <div class="sh-nm">Dr. Cid</div>
+      <div class="sh-hd">@dr.cid · Oncologista Clínico Sênior</div>
+    </div>
+    <span class="sh-lv" style="color:#E05C10;border-color:#E05C10">Palestrante N5</span>
+  </div>
+
+  <div class="sh-user" id="su-bea">
+    <div class="sh-av" style="color:#E05C10;border-color:#E05C10">BT</div>
+    <div class="sh-info">
+      <div class="sh-nm">Dra. Beatriz Tavares</div>
+      <div class="sh-hd">@b.tavares · Oncologista — Professora EBO</div>
+    </div>
+    <span class="sh-lv" style="color:#E05C10;border-color:#E05C10">Palestrante N5</span>
+  </div>
+
+  <div class="sh-user" id="su-raf">
+    <div class="sh-av" style="color:#D07820;border-color:#D07820">RA</div>
+    <div class="sh-info">
+      <div class="sh-nm">Dr. Rafael Andrade</div>
+      <div class="sh-hd">@r.andrade · Pesquisador Clínico — INCA</div>
+    </div>
+    <span class="sh-lv" style="color:#D07820;border-color:#D07820">Autor N4</span>
+  </div>
+
+  <div class="sh-user" id="su-ana">
+    <div class="sh-av" style="color:#B06030;border-color:#B06030">AM</div>
+    <div class="sh-info">
+      <div class="sh-nm">Dra. Ana Lúcia Motta</div>
+      <div class="sh-hd">@a.motta · Residente em Oncologia Clínica</div>
+    </div>
+    <span class="sh-lv" style="color:#B06030;border-color:#B06030">Comentarista N3</span>
+  </div>
+
+  <div class="sh-user" id="su-mar">
+    <div class="sh-av" style="color:#666;border-color:#666">MO</div>
+    <div class="sh-info">
+      <div class="sh-nm">Enf. Márcia Oliveira</div>
+      <div class="sh-hd">@m.oliveira · Enfermeira Oncológica</div>
+    </div>
+    <span class="sh-lv" style="color:#666;border-color:#666">Distribuidora N2</span>
+  </div>
+
+  <div class="sh-note">Nível exibido para a vertical atual. Mude de vertical para ver outros níveis.</div>
+</div>
+
+<!-- ═══════════════════════════ FEED SCREEN ═══════════════════════════ -->
+<div id="scr-feed" class="scr on">
+  <div class="feed-hdr">
+    <span class="feed-ttl" id="feed-topic-header">Pesquisa Clínica</span>
+    <span class="feed-cnt" id="feed-topic-count">5 artigos</span>
+  </div>
+  <div class="card-list">
+
+<!-- ═══════ PESQUISA CLÍNICA ═══════ -->
+<div id="section-pesquisa" style="display:block">
+
+<div class="acard" id="card-p1">
+  <div class="card-meta">
+    <span class="c-tag">Pesquisa Clínica</span>
+    <span class="c-by">Por <b>Dra. Beatriz Tavares</b></span>
+    <span class="c-alvl" style="color:#E05C10;border-color:#E05C10">Palestrante</span>
+    <span class="c-time">2 dias atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Ensaio LAURA confirma benefício do osimertinib adjuvante em CPNPC com mutação EGFR</div>
+    <div class="c-dck">Análise dos dados do LAURA trial apresentados no ASCO 2024 mostra impacto significativo na sobrevida livre de progressão em pacientes com câncer de pulmão não pequenas células ressecado.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 1840</span>
+      <span class="c-stat">Comentários: 12</span>
+    </div>
+    <button class="c-rbtn" id="rb-p1">Ler</button>
+  </div>
+  <div class="card-body" id="bd-p1">
+    <p>O ensaio LAURA, randomizado fase 3, avaliou o osimertinib adjuvante em pacientes com CPNPC ressecado estágio IB–IIIA e mutação ativadora de EGFR após quimiorradioterapia concomitante. O estudo foi apresentado como late-breaking abstract no ASCO 2024 e publicado simultaneamente no New England Journal of Medicine.</p>
+    <p>A mediana de sobrevida livre de progressão foi de 39,1 meses no braço osimertinib versus 5,6 meses no grupo placebo (HR 0,23; IC 95% 0,18–0,30; p&lt;0,001). A magnitude do benefício é notável mesmo considerando-se o contexto de uma população já submetida à ressecção cirúrgica e tratamento multimodal.</p>
+    <p>A taxa de resposta intracraniana, endpoint secundário de grande relevância prática, também favoreceu o osimertinib (74% vs 22% de progressão no SNC no grupo controle). Esses dados reforçam o papel do osimertinib na prevenção de metástases cerebrais — complicação frequente e de difícil manejo nessa população.</p>
+    <p>Do ponto de vista da segurança, o perfil foi consistente com estudos anteriores. As toxicidades mais frequentes foram diarreia (46%), infecções do trato respiratório superior (38%) e paroníquia (34%), em sua maioria grau 1 ou 2. Não houve sinais de toxicidade pulmonar inesperada nesta população pós-radioterapia.</p>
+    <p>Esse resultado representa um avanço prático relevante para o oncologista clínico brasileiro, onde o diagnóstico de CPNPC ainda ocorre majoritariamente em estágios avançados, mas onde o molecular testing está progressivamente sendo incorporado à rotina.</p>
+  </div>
+  <div class="iz-wrap" id="iz-p1" data-id="p1"></div>
+</div>
+
+<div class="acard" id="card-p2">
+  <div class="card-meta">
+    <span class="c-tag">Pesquisa Clínica</span>
+    <span class="c-by">Por <b>Dr. Cid</b></span>
+    <span class="c-alvl" style="color:#E05C10;border-color:#E05C10">Palestrante</span>
+    <span class="c-time">5 dias atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Plataforma de Pesquisa Clínica SBOC: como identificar estudos abertos para seus pacientes</div>
+    <div class="c-dck">A SBOC disponibiliza plataforma em português com todos os ensaios clínicos oncológicos em andamento no Brasil. Saiba como usar e como conectar seus pacientes às oportunidades de acesso.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 1260</span>
+      <span class="c-stat">Comentários: 8</span>
+    </div>
+    <button class="c-rbtn" id="rb-p2">Ler</button>
+  </div>
+  <div class="card-body" id="bd-p2">
+    <p>Desde março de 2025, a SBOC mantém a Plataforma de Pesquisa Clínica — um hub em português que centraliza estudos clínicos oncológicos em andamento no território nacional. A ferramenta foi desenvolvida em resposta a uma demanda histórica dos associados: a dificuldade de identificar rapidamente se existe um ensaio aberto para um paciente específico.</p>
+    <p>A busca pode ser feita por tipo de tumor, fase do estudo, localização geográfica do centro investigador e fase da doença. Para oncologistas que atendem fora dos grandes centros universitários, esse filtro geográfico é especialmente útil — nem sempre há disponibilidade logística para encaminhar um paciente a São Paulo ou Rio.</p>
+    <p>Na prática, recomendo integrar a consulta à plataforma ao fluxo de atendimento de pacientes com diagnóstico novo ou recidiva. Em alguns casos — especialmente em tumores raros ou com molecular targets específicos — a pesquisa clínica representa a melhor opção terapêutica disponível.</p>
+    <p>Um ponto que frequentemente subestimamos: pacientes em ensaios clínicos recebem monitoramento mais intenso e acesso a equipes multidisciplinares. Para populações vulneráveis, esses fatores podem ser determinantes de adesão e qualidade de vida durante o tratamento.</p>
+    <p>A SBOC também oferece o Programa de Pesquisa Clínica, com visitas guiadas a centros de referência para residentes e especialistas. Para quem está iniciando na área, esse programa é um ponto de entrada valioso.</p>
+  </div>
+  <div class="iz-wrap" id="iz-p2" data-id="p2"></div>
+</div>
+
+<div class="acard" id="card-p3">
+  <div class="card-meta">
+    <span class="c-tag">Pesquisa Clínica</span>
+    <span class="c-by">Por <b>Dr. Rafael Andrade</b></span>
+    <span class="c-alvl" style="color:#D07820;border-color:#D07820">Autor</span>
+    <span class="c-time">1 semana atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">FIP-SBOC 2025: oportunidades de financiamento para pesquisa oncológica no Brasil</div>
+    <div class="c-dck">O Fundo de Incentivo à Pesquisa da SBOC abre inscrições para projetos em oncologia clínica. Veja os critérios, prazos e como submeter sua proposta.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 980</span>
+      <span class="c-stat">Comentários: 6</span>
+    </div>
+    <button class="c-rbtn" id="rb-p3">Ler</button>
+  </div>
+  <div class="card-body" id="bd-p3">
+    <p>O Fundo de Incentivo à Pesquisa da SBOC — FIP-SBOC — é um dos principais mecanismos de financiamento à pesquisa oncológica independente no Brasil. O FIP financia projetos propostos e conduzidos por oncologistas brasileiros, com agenda científica definida pelos próprios investigadores.</p>
+    <p>O edital 2025 contempla três modalidades: pesquisa clínica prospectiva, estudos translacionais e projetos de saúde pública em oncologia. Os valores variam de R$30.000 a R$150.000, com prazo de execução de 18 a 36 meses.</p>
+    <p>Para pesquisadores fora dos grandes centros universitários, o FIP representa uma oportunidade especialmente relevante. O comitê avalia a ciência, não o nome da instituição — projetos de centros menores têm taxa de aprovação comparável quando bem fundamentados metodologicamente.</p>
+    <p>Um aspecto prático: o FIP permite custeio de bioestatístico, frequentemente o recurso mais escasso em pesquisas menores. Esse suporte define a diferença entre um estudo que gera publicação indexada e um que fica restrito à apresentação em congressos nacionais.</p>
+    <p>As submissões estão abertas até 30 de junho. A documentação exigida inclui protocolo resumido, curriculum vitae, declaração de conflitos de interesse e carta da chefia institucional.</p>
+  </div>
+  <div class="iz-wrap" id="iz-p3" data-id="p3"></div>
+</div>
+
+<div class="acard" id="card-p4">
+  <div class="card-meta">
+    <span class="c-tag">Pesquisa Clínica</span>
+    <span class="c-by">Por <b>Dr. Cid</b></span>
+    <span class="c-alvl" style="color:#E05C10;border-color:#E05C10">Palestrante</span>
+    <span class="c-time">10 dias atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Mutações somáticas: o que o clínico precisa saber para interpretar laudos de NGS</div>
+    <div class="c-dck">O sequenciamento de nova geração é cada vez mais acessível na prática clínica brasileira. Mas interpretar um laudo de NGS exige conhecimento sobre variantes de significado incerto, TMB e outras métricas.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 750</span>
+      <span class="c-stat">Comentários: 4</span>
+    </div>
+    <button class="c-rbtn" id="rb-p4">Ler</button>
+  </div>
+  <div class="card-body" id="bd-p4">
+    <p>O sequenciamento de nova geração — Next Generation Sequencing, ou NGS — deixou de ser exclusividade de grandes centros de referência e está progressivamente disponível em laboratórios privados brasileiros. Com isso, oncologistas clínicos recebem laudos com dezenas de variantes e precisam decidir quais são clinicamente acionáveis.</p>
+    <p>O primeiro conceito fundamental é a distinção entre variantes patogênicas, provavelmente patogênicas, de significado incerto (VUS), provavelmente benignas e benignas. As VUS representam o maior desafio: o laudo identifica uma alteração, mas não há evidência suficiente para classificá-la como driver ou passageira.</p>
+    <p>O Tumor Mutational Burden — TMB — é outra métrica presente em laudos de NGS e relevante para a seleção de candidatos à imunoterapia. TMB-H (alto) é definido como ≥10 mutações/megabase segundo o threshold da FDA, mas esse corte tem limitações em tumores com perfis mutatórios específicos.</p>
+    <p>A SBOC oferece o módulo Mutações Somáticas dentro da Escola Brasileira de Oncologia, com aulas práticas sobre interpretação de NGS voltadas para oncologistas clínicos. O módulo inclui casos clínicos comentados e acesso a bases como OncoKB e ClinVar.</p>
+    <p>Para o dia a dia: quando receber um laudo de NGS extenso, concentre-se nas alterações com nível de evidência 1 ou 2 segundo a ESCAT (ESMO Scale for Clinical Actionability of molecular Targets). São essas que mudarão a conduta.</p>
+  </div>
+  <div class="iz-wrap" id="iz-p4" data-id="p4"></div>
+</div>
+
+<div class="acard" id="card-p5">
+  <div class="card-meta">
+    <span class="c-tag">Pesquisa Clínica</span>
+    <span class="c-by">Por <b>Dra. Ana Lúcia Motta</b></span>
+    <span class="c-alvl" style="color:#B06030;border-color:#B06030">Comentarista</span>
+    <span class="c-time">2 semanas atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Minha experiência no Programa de Capacitação em Pesquisa Clínica da SBOC</div>
+    <div class="c-dck">Como residente, participar do programa de visitas guiadas a centros de referência mudou minha perspectiva sobre como funciona um ensaio clínico na prática.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 520</span>
+      <span class="c-stat">Comentários: 9</span>
+    </div>
+    <button class="c-rbtn" id="rb-p5">Ler</button>
+  </div>
+  <div class="card-body" id="bd-p5">
+    <p>Quando me inscrevi no Programa de Pesquisa Clínica da SBOC, imaginava que aprenderia principalmente sobre protocolos e regulamentação. Saí com uma compreensão muito mais ampla: entendi como se constrói uma hipótese científica que resulta em um trial, como funciona o dia a dia de uma equipe de pesquisa e quais são os desafios reais de conduzir pesquisa oncológica no Brasil.</p>
+    <p>A visita ao A.C.Camargo foi marcante. A equipe de pesquisa clínica — coordenadores, enfermeiras de pesquisa, bioestatístico e investigadores — mostrou como cada protocolo aberto exige uma estrutura paralela de funcionamento. Não é possível simplesmente "adicionar" um ensaio clínico a um ambulatório sem planejamento específico.</p>
+    <p>Um dado que me surpreendeu: os centros mais produtivos em termos de recrutamento não são necessariamente os maiores. Centros menores, com coordenadores dedicados e fluxo clínico bem definido, frequentemente superam grandes hospitais em taxa de recrutamento. Organização supera tamanho.</p>
+    <p>Para residentes que estão considerando seguir carreira acadêmica — ou que simplesmente querem entender como usar a pesquisa clínica como ferramenta para seus pacientes — recomendo fortemente esse programa. As inscrições para a próxima turma abrem em abril.</p>
+  </div>
+  <div class="iz-wrap" id="iz-p5" data-id="p5"></div>
+</div>
+
+</div><!-- end section-pesquisa -->
+
+<!-- ═══════ MULHERES NA ONCOLOGIA ═══════ -->
+<div id="section-mulheres" style="display:none">
+
+<div class="acard" id="card-m1">
+  <div class="card-meta">
+    <span class="c-tag">Mulheres na Oncologia</span>
+    <span class="c-by">Por <b>Dra. Beatriz Tavares</b></span>
+    <span class="c-alvl" style="color:#E05C10;border-color:#E05C10">Palestrante</span>
+    <span class="c-time">1 dia atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Mulheres em AntecipAÇÃO: o que aprendemos com a segunda edição do evento</div>
+    <div class="c-dck">O seminário realizado em março reuniu entidades médicas para discutir prevenção e diagnóstico precoce dos tumores femininos. Os dados apresentados reforçam a urgência de uma abordagem integrada.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 2340</span>
+      <span class="c-stat">Comentários: 18</span>
+    </div>
+    <button class="c-rbtn" id="rb-m1">Ler</button>
+  </div>
+  <div class="card-body" id="bd-m1">
+    <p>A segunda edição do "Mulheres em AntecipAÇÃO — Autoconhecimento é poder!" foi realizada em São Paulo na primeira semana de março de 2026, reunindo a SBOC e grupos colaborativos em um seminário focado em prevenção e diagnóstico precoce dos tumores femininos. O câncer consolidou-se como uma das principais causas de mortalidade entre mulheres no Brasil.</p>
+    <p>O dado mais impactante do evento: apenas 25% das mulheres brasileiras realizam mamografia regularmente, e esse percentual cai para menos de 15% em regiões Norte e Nordeste. A descontinuidade do rastreamento — mulheres que fazem um exame e não retornam — é tão preocupante quanto a não realização.</p>
+    <p>A discussão sobre câncer de colo de útero trouxe um dado paradoxal: o Brasil tem um dos programas de vacinação contra HPV mais amplos do mundo, mas a taxa de diagnóstico tardio do câncer de colo permanece elevada nas populações mais vulneráveis. A vacina protege, mas não substitui o Papanicolau.</p>
+    <p>Dra. Clarissa Baldotto, presidente da SBOC, destacou na abertura que prevenção e diagnóstico precoce não são apenas questões clínicas — são questões de equidade. Mulheres negras, de baixa renda e residentes em municípios de pequeno porte têm mortalidade por câncer de mama consistentemente superior à média nacional.</p>
+    <p>A terceira edição está sendo planejada para o segundo semestre de 2026, com foco em câncer de ovário — tumor frequentemente diagnosticado em estágio avançado pela ausência de sintomas precoces e pela inexistência de rastreamento validado para a população geral.</p>
+  </div>
+  <div class="iz-wrap" id="iz-m1" data-id="m1"></div>
+</div>
+
+<div class="acard" id="card-m2">
+  <div class="card-meta">
+    <span class="c-tag">Mulheres na Oncologia</span>
+    <span class="c-by">Por <b>Enf. Márcia Oliveira</b></span>
+    <span class="c-alvl" style="color:#D07820;border-color:#D07820">Autora</span>
+    <span class="c-time">4 dias atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Navegação de pacientes oncológicas: o que aprendi em dois anos como navigadora</div>
+    <div class="c-dck">O Programa de Capacitação em Navegação de Pacientes da SBOC formou mais de 200 profissionais. Como navigadora em hospital público, compartilho o que esse papel significa na prática.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 1580</span>
+      <span class="c-stat">Comentários: 14</span>
+    </div>
+    <button class="c-rbtn" id="rb-m2">Ler</button>
+  </div>
+  <div class="card-body" id="bd-m2">
+    <p>Sou enfermeira oncológica há oito anos e navigadora de pacientes há dois. A navegação de pacientes coloca um profissional de saúde treinado como ponto de contato entre a paciente oncológica e o sistema. Meu papel é identificar e remover barreiras que impedem o acesso ao diagnóstico e ao tratamento.</p>
+    <p>Na prática, isso significa coisas muito concretas: ajudar uma paciente a entender o resultado da biópsia, coordenar o agendamento de consultas em especialidades diferentes no mesmo dia, orientar sobre transporte e alojamento para quem vem de outro município, e simplesmente ser a pessoa que atende o telefone quando ela está com medo.</p>
+    <p>O Programa de Capacitação em Navegação de Pacientes da SBOC me deu o arcabouço técnico que faltava. Aprendi sobre sistemas de saúde, comunicação de risco, barreiras financeiras e logísticas. O programa é gratuito para associados e tem formato híbrido — fundamental para profissionais fora dos grandes centros.</p>
+    <p>Estudos americanos mostram que navegação estruturada reduz o tempo entre suspeita diagnóstica e início de tratamento em até 40% em populações vulneráveis. No contexto do SUS, onde o gargalo está muitas vezes na organização dos fluxos, isso é transformador.</p>
+    <p>Se você é enfermeiro(a), assistente social ou outro profissional de saúde interessado em navegação, verifique as próximas turmas no portal da SBOC. Para oncologistas que querem estruturar navegação nos seus serviços, posso compartilhar nossa experiência de implantação pelo Kodes.</p>
+  </div>
+  <div class="iz-wrap" id="iz-m2" data-id="m2"></div>
+</div>
+
+<div class="acard" id="card-m3">
+  <div class="card-meta">
+    <span class="c-tag">Mulheres na Oncologia</span>
+    <span class="c-by">Por <b>Dra. Beatriz Tavares</b></span>
+    <span class="c-alvl" style="color:#E05C10;border-color:#E05C10">Palestrante</span>
+    <span class="c-time">1 semana atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Guia Lideranças Femininas SBOC: uma publicação necessária e inacabada</div>
+    <div class="c-dck">O Guia publicado pela SBOC documenta desafios reais das oncologistas brasileiras. Os dados são reveladores — e deveriam incomodar mais do que incomodam.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 1920</span>
+      <span class="c-stat">Comentários: 22</span>
+    </div>
+    <button class="c-rbtn" id="rb-m3">Ler</button>
+  </div>
+  <div class="card-body" id="bd-m3">
+    <p>A SBOC publicou o Guia Lideranças Femininas — uma análise qualitativa e quantitativa sobre os desafios da carreira das oncologistas no Brasil. O dado mais revelador não é o percentual de mulheres em cargos de liderança — sabemos que é baixo. É o dado qualitativo: quando perguntadas sobre os principais obstáculos, as oncologistas colocam a "percepção de que precisam trabalhar o dobro para receber igual reconhecimento" acima de fatores estruturais como maternidade.</p>
+    <p>O gap salarial é documentado: oncologistas mulheres ganham em média 18% menos do que seus colegas homens em posições equivalentes. Combinado com a sub-representação feminina em bancas de concurso, comitês científicos e mesas de congressos, aponta para um sistema que se retroalimenta.</p>
+    <p>A Pesquisa Liderança Feminina, conduzida em parceria com o Datafolha, mostrou que a maioria das oncologistas que chegaram a posições de liderança relatam ter tido um ou mais mentores. A ausência de mentoria é apontada como fator limitante pelas que não chegaram. Programas de mentoria formal são uma intervenção de baixo custo e alto impacto.</p>
+    <p>O Guia é um ponto de partida, não de chegada. Seu mérito maior é nomear claramente o problema — o que nem sempre é feito com essa objetividade em publicações de sociedades médicas. Espero que a próxima edição venha acompanhada de um plano de metas mensuráveis da própria SBOC.</p>
+  </div>
+  <div class="iz-wrap" id="iz-m3" data-id="m3"></div>
+</div>
+
+<div class="acard" id="card-m4">
+  <div class="card-meta">
+    <span class="c-tag">Mulheres na Oncologia</span>
+    <span class="c-by">Por <b>Dra. Ana Lúcia Motta</b></span>
+    <span class="c-alvl" style="color:#B06030;border-color:#B06030">Comentarista</span>
+    <span class="c-time">10 dias atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Como é ser residente mulher em oncologia clínica em 2026</div>
+    <div class="c-dck">Uma reflexão honesta sobre o ambiente da residência, os progressos reais e o que ainda precisa mudar.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 880</span>
+      <span class="c-stat">Comentários: 11</span>
+    </div>
+    <button class="c-rbtn" id="rb-m4">Ler</button>
+  </div>
+  <div class="card-body" id="bd-m4">
+    <p>Estou no segundo ano da residência em oncologia clínica. Quando entrei no programa, éramos oito residentes — cinco mulheres e três homens. Essa proporção, que teria sido improvável há dez anos, é hoje comum nos programas mais novos. Isso é um progresso real e merece ser celebrado.</p>
+    <p>Mas proporção na entrada não garante trajetórias equivalentes. Percebo diferenças sutis — mas consistentes — na forma como residentes mulheres e homens são avaliados em situações idênticas. Uma residente assertiva é percebida como "difícil"; um residente assertivo é visto como "seguro". Isso não é uma impressão — está documentado na literatura sobre avaliação de desempenho em residências médicas.</p>
+    <p>Um episódio concreto: fui a primeira residente da turma a publicar um relato de caso em revista indexada. A reação padrão dos colegas foi me perguntar quem foi o orientador. Ao colega que publicou depois de mim — um homem — as perguntas foram sobre o processo de escrita e submissão. Pequenas diferenças. Consistentes.</p>
+    <p>O que me sustenta: professoras como a Dra. Beatriz, que não apenas ensinam oncologia mas mostram pelo exemplo que é possível ter carreira acadêmica sólida e voz ativa nas decisões institucionais. Representatividade é real. Quando existe, faz diferença concreta na percepção do que é possível.</p>
+  </div>
+  <div class="iz-wrap" id="iz-m4" data-id="m4"></div>
+</div>
+
+<div class="acard" id="card-m5">
+  <div class="card-meta">
+    <span class="c-tag">Mulheres na Oncologia</span>
+    <span class="c-by">Por <b>Dr. Rafael Andrade</b></span>
+    <span class="c-alvl" style="color:#666;border-color:#666">Distribuidor</span>
+    <span class="c-time">2 semanas atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Incluir homens na conversa sobre liderança feminina na oncologia: por quê e como</div>
+    <div class="c-dck">Discussões sobre equidade de gênero frequentemente ficam restritas às próprias mulheres. Isso é um problema — e uma oportunidade perdida.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 640</span>
+      <span class="c-stat">Comentários: 5</span>
+    </div>
+    <button class="c-rbtn" id="rb-m5">Ler</button>
+  </div>
+  <div class="card-body" id="bd-m5">
+    <p>Sou pesquisador, homem e chefe de um grupo de pesquisa com maioria feminina. Equidade de gênero nas ciências da saúde não será alcançada apenas pelas mulheres que a reivindicam. Ela requer que homens em posições de influência — orientadores, chefes de serviço, coordenadores de programa — tomem decisões ativas e consistentes.</p>
+    <p>No meu grupo de pesquisa, implementei três práticas concretas nos últimos dois anos: paridade nas bancas de seleção de bolsistas; uso de linguagem neutra em documentos e apresentações; e uma política explícita de que, para mesas de congressos que organizamos, nenhum painel será 100% masculino.</p>
+    <p>Para os colegas homens que leem isso e se perguntam como começar: o passo mais simples é prestar atenção em quem você cita, recomenda e convida. Estudos mostram que homens em posições acadêmicas tendem a citar e recomendar outros homens de forma desproporcional — não por má intenção, mas por viés de disponibilidade. Tornar isso consciente já muda o padrão.</p>
+  </div>
+  <div class="iz-wrap" id="iz-m5" data-id="m5"></div>
+</div>
+
+</div><!-- end section-mulheres -->
+
+<!-- ═══════ DIVERSIDADE NA ONCOLOGIA ═══════ -->
+<div id="section-diversidade" style="display:none">
+
+<div class="acard" id="card-d1">
+  <div class="card-meta">
+    <span class="c-tag">Diversidade na Oncologia</span>
+    <span class="c-by">Por <b>Dr. Cid</b></span>
+    <span class="c-alvl" style="color:#E05C10;border-color:#E05C10">Palestrante</span>
+    <span class="c-time">3 dias atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Disparidades raciais em câncer de mama no Brasil: o que os dados dizem e o que ainda ignoramos</div>
+    <div class="c-dck">Mulheres negras têm mortalidade por câncer de mama 30% maior do que mulheres brancas no Brasil. As causas são múltiplas — e a maioria é evitável.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 1120</span>
+      <span class="c-stat">Comentários: 9</span>
+    </div>
+    <button class="c-rbtn" id="rb-d1">Ler</button>
+  </div>
+  <div class="card-body" id="bd-d1">
+    <p>Os dados do INCA mostram que mulheres negras brasileiras têm mortalidade por câncer de mama consistentemente superior à de mulheres brancas — a diferença varia entre 20% e 35% dependendo da região. Esse é um dos exemplos mais documentados de disparidade racial em saúde no Brasil.</p>
+    <p>As causas são multifatoriais: o diagnóstico mais tardio é o fator com maior contribuição demonstrada. Mulheres negras chegam com maior proporção de tumores estágio III e IV, o que reduz as opções terapêuticas e piora o prognóstico independentemente da qualidade do tratamento oferecido.</p>
+    <p>O diagnóstico tardio tem determinantes estruturais: menor acesso a serviços de rastreamento, menor adesão a mamografias de seguimento, e menor representatividade nos estudos que embasaram as recomendações de rastreamento — o que gera políticas menos calibradas para essa população.</p>
+    <p>O Comitê de Diversidade da SBOC tem trabalhado em uma agenda de equidade em oncologia que inclui dados estratificados por raça/cor nos estudos nacionais e recomendações para que os serviços coletem e monitorem esses dados sistematicamente. Não podemos corrigir o que não medimos.</p>
+  </div>
+  <div class="iz-wrap" id="iz-d1" data-id="d1"></div>
+</div>
+
+<div class="acard" id="card-d2">
+  <div class="card-meta">
+    <span class="c-tag">Diversidade na Oncologia</span>
+    <span class="c-by">Por <b>Dra. Ana Lúcia Motta</b></span>
+    <span class="c-alvl" style="color:#B06030;border-color:#B06030">Comentarista</span>
+    <span class="c-time">6 dias atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Oncologia e população LGBTQIA+: lacunas no cuidado que precisamos nomear</div>
+    <div class="c-dck">Pacientes LGBTQIA+ com câncer enfrentam barreiras específicas de acesso e cuidado que raramente são discutidas na formação médica.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 760</span>
+      <span class="c-stat">Comentários: 13</span>
+    </div>
+    <button class="c-rbtn" id="rb-d2">Ler</button>
+  </div>
+  <div class="card-body" id="bd-d2">
+    <p>Durante a residência, tive poucos momentos em que a formação médica abordou de forma direta as necessidades específicas de pacientes LGBTQIA+ com câncer. O tema aparece pontualmente — algumas menções ao câncer anal em homens que fazem sexo com homens, alguma discussão sobre triagem de câncer de colo em mulheres trans. Mas raramente como uma competência clínica estruturada.</p>
+    <p>A lacuna mais crítica: perguntas inadequadas ou ausentes na anamnese. Um formulário que pergunta apenas "nome do cônjuge" e assume gênero binário cria barreiras invisíveis mas reais. Pacientes que não se sentem seguros para revelar sua identidade podem omitir informações clinicamente relevantes.</p>
+    <p>Para pacientes trans que usam terapia hormonal, há interações com quimioterápicos e agentes anticoagulantes raramente abordadas nos protocolos oncológicos padrão. Os estudos que embasam as diretrizes excluíram sistematicamente pacientes transgênero — o que gera incerteza clínica real para o oncologista.</p>
+    <p>O que podemos fazer agora: criar ambientes clínicos acolhedores, usar pronomes corretos, incluir perguntas sobre identidade de gênero e sexualidade de forma respeitosa, e reconhecer abertamente quando há incerteza clínica — em vez de ignorar a questão.</p>
+  </div>
+  <div class="iz-wrap" id="iz-d2" data-id="d2"></div>
+</div>
+
+<div class="acard" id="card-d3">
+  <div class="card-meta">
+    <span class="c-tag">Diversidade na Oncologia</span>
+    <span class="c-by">Por <b>Dr. Rafael Andrade</b></span>
+    <span class="c-alvl" style="color:#D07820;border-color:#D07820">Autor</span>
+    <span class="c-time">1 semana atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Representatividade em ensaios clínicos: por que a diversidade dos participantes importa para todos</div>
+    <div class="c-dck">Ensaios com participantes majoritariamente brancos e do sexo masculino geram evidências que nem sempre se traduzem para outras populações. Isso é um problema científico, não apenas ético.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 890</span>
+      <span class="c-stat">Comentários: 7</span>
+    </div>
+    <button class="c-rbtn" id="rb-d3">Ler</button>
+  </div>
+  <div class="card-body" id="bd-d3">
+    <p>A crítica à falta de diversidade em ensaios clínicos é frequentemente enquadrada como uma questão ética. Isso é correto — mas incompleto. A sub-representação de certos grupos é também um problema científico que compromete a validade externa dos resultados e a qualidade do cuidado que prestamos a populações diversas.</p>
+    <p>Um exemplo concreto: metanálises de imunobiológicos em câncer de pulmão mostram que a eficácia do pembrolizumab varia significativamente em subgrupos populacionais com características genéticas associadas a determinadas ancestralidades. Se o trial pivot incluía 3% de participantes afrodescendentes, a generalização tem limitações reais.</p>
+    <p>No Brasil, esse problema é agravado pela ausência histórica de coleta sistemática de dados de raça/cor em ensaios clínicos. Sem esses dados, não podemos nem identificar o problema. A SBOC tem defendido, junto à CONEP e à ANVISA, a inclusão obrigatória de variáveis de raça/cor em protocolos de pesquisa.</p>
+    <p>Para investigadores desenhando estudos agora: incluir metas de recrutamento estratificadas por raça/cor, gênero e região geográfica é boa ciência. Resultados mais generalizáveis têm maior impacto clínico e, em última análise, são mais publicáveis nas melhores revistas — que cada vez mais exigem relatório de diversidade de participantes.</p>
+  </div>
+  <div class="iz-wrap" id="iz-d3" data-id="d3"></div>
+</div>
+
+<div class="acard" id="card-d4">
+  <div class="card-meta">
+    <span class="c-tag">Diversidade na Oncologia</span>
+    <span class="c-by">Por <b>Dra. Beatriz Tavares</b></span>
+    <span class="c-alvl" style="color:#E05C10;border-color:#E05C10">Palestrante</span>
+    <span class="c-time">2 semanas atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Diversidade na oncologia: além das cotas, construindo pertencimento</div>
+    <div class="c-dck">Iniciativas de diversidade que apenas aumentam números sem mudar cultura produzem inclusão formal e exclusão real. A experiência de pertencimento é o que determina retenção e impacto.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 1340</span>
+      <span class="c-stat">Comentários: 16</span>
+    </div>
+    <button class="c-rbtn" id="rb-d4">Ler</button>
+  </div>
+  <div class="card-body" id="bd-d4">
+    <p>O Comitê de Diversidade da SBOC tem trabalhado em uma agenda que vai além da representação numérica. O documento Diversidade na Oncologia — disponível no portal da SBOC — mapeia iniciativas em andamento e propõe métricas para acompanhamento. Mas o mais importante está nas entrelinhas: a construção de uma cultura onde perspectivas diversas são genuinamente valorizadas, não apenas toleradas.</p>
+    <p>A experiência de pertencimento — sentir que se é parte legítima de um ambiente, não uma cota ou uma exceção — é o determinante mais robusto de retenção em qualquer organização. Em medicina, isso é especialmente crítico: profissionais de grupos sub-representados que não experimentam pertencimento abandonam posições de liderança e academia em taxas desproporcionais.</p>
+    <p>Para programas de residência: acolhimento não acontece espontaneamente. Requer design ativo — desde os critérios de seleção até as práticas de avaliação. A SBOC tem oferecido consultoria para coordenadores de residência que querem estruturar isso de forma intencional.</p>
+    <p>Encerro com uma provocação: qual é a métrica de sucesso do seu serviço em diversidade? Se a resposta for apenas "quantas pessoas de grupos minorizados temos", você está medindo inclusão, não pertencimento. A métrica certa é quanto essas pessoas influenciam decisões. Esse é o número que importa.</p>
+  </div>
+  <div class="iz-wrap" id="iz-d4" data-id="d4"></div>
+</div>
+
+<div class="acard" id="card-d5">
+  <div class="card-meta">
+    <span class="c-tag">Diversidade na Oncologia</span>
+    <span class="c-by">Por <b>Enf. Márcia Oliveira</b></span>
+    <span class="c-alvl" style="color:#666;border-color:#666">Distribuidora</span>
+    <span class="c-time">3 semanas atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Cuidado oncológico e barreira linguística: invisibilidade que custa vidas</div>
+    <div class="c-dck">Pacientes imigrantes e indígenas com câncer enfrentam barreiras linguísticas que comprometem desde o consentimento informado até a adesão ao tratamento.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 410</span>
+      <span class="c-stat">Comentários: 6</span>
+    </div>
+    <button class="c-rbtn" id="rb-d5">Ler</button>
+  </div>
+  <div class="card-body" id="bd-d5">
+    <p>No hospital onde trabalho, atendemos regularmente pacientes bolivianos, paraguaios e haitianos, além de uma população crescente de pacientes indígenas encaminhados de territórios no interior do estado. O câncer não escolhe língua. Mas nosso sistema de saúde, projetado para falantes de português, cria barreiras que podem ser letais.</p>
+    <p>A situação mais crítica que vivi: uma paciente boliviana com diagnóstico de câncer de colo avançado, hispanófona, que assinou o consentimento informado para quimioterapia sem compreender completamente o que estava autorizando. Ela não aderiu ao segundo ciclo — nunca soubemos por quê, porque também não conseguimos comunicação adequada no retorno.</p>
+    <p>Tradutores ad hoc — filhos, maridos, outros pacientes na sala de espera — são insuficientes e eticamente problemáticos para informações médicas sensíveis. Precisamos de acesso a intérpretes treinados, pelo menos para diagnóstico, consentimento e discussão de prognóstico.</p>
+    <p>No meu papel de navigadora, consigo acionar voluntários bilíngues da comunidade em alguns casos. Mas isso é gambiarra, não solução. Precisamos de política institucional. Se alguém está trabalhando nesse tema e quer trocar experiência, me encontrem no Kodes.</p>
+  </div>
+  <div class="iz-wrap" id="iz-d5" data-id="d5"></div>
+</div>
+
+</div><!-- end section-diversidade -->
+
+<!-- ═══════ NOTÍCIAS & EVENTOS ═══════ -->
+<div id="section-noticias" style="display:none">
+
+<div class="acard" id="card-n1">
+  <div class="card-meta">
+    <span class="c-tag">Notícias &amp; Eventos</span>
+    <span class="c-by">Por <b>Dra. Beatriz Tavares</b></span>
+    <span class="c-alvl" style="color:#E05C10;border-color:#E05C10">Palestrante</span>
+    <span class="c-time">2 dias atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">SBOC integra Grupo de Trabalho Intersetorial de Vacinação: o que isso significa para a oncologia</div>
+    <div class="c-dck">A SBOC é uma das 17 instituições do grupo VAI, criado para ampliar cobertura vacinal em adultos e idosos. Para pacientes oncológicos, vacinação é questão crítica de segurança.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 3120</span>
+      <span class="c-stat">Comentários: 24</span>
+    </div>
+    <button class="c-rbtn" id="rb-n1">Ler</button>
+  </div>
+  <div class="card-body" id="bd-n1">
+    <p>A Sociedade Brasileira de Oncologia Clínica passou a integrar o Grupo de Trabalho Intersetorial de Vacinação do Adulto e do Idoso — o VAI —, iniciativa que reúne 17 entidades da área da saúde. Para a oncologia, essa participação é estrategicamente relevante.</p>
+    <p>Pacientes em tratamento oncológico ativo — especialmente os que recebem quimioterapia mielossupressora, terapias alvo ou imunossupressores — têm risco aumentado de infecções e resposta imunológica reduzida a algumas vacinas. A orientação vacinal deve ser parte do cuidado oncológico.</p>
+    <p>O calendário vacinal do adulto em oncologia inclui especificidades: influenza anual; pneumocócica com protocolo específico para imunossuprimidos; herpes-zóster em pacientes acima de 50 anos antes do início de imunossupressão; e hepatite B com sorologia de controle, dado que esses pacientes frequentemente não respondem com os títulos esperados.</p>
+    <p>Para oncologistas que querem atualizar sua prática: a SBOC disponibiliza na OncoAcademy um módulo sobre vacinação em oncologia, atualizado em 2025. Recomendo especialmente a seção sobre vacinas vivas atenuadas — contraindicadas em pacientes imunossuprimidos mas frequentemente esquecidas no checklist pré-tratamento.</p>
+  </div>
+  <div class="iz-wrap" id="iz-n1" data-id="n1"></div>
+</div>
+
+<div class="acard" id="card-n2">
+  <div class="card-meta">
+    <span class="c-tag">Notícias &amp; Eventos</span>
+    <span class="c-by">Por <b>Dr. Cid</b></span>
+    <span class="c-alvl" style="color:#E05C10;border-color:#E05C10">Palestrante</span>
+    <span class="c-time">5 dias atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Congresso SBOC 2026: o que esperar e como aproveitar ao máximo</div>
+    <div class="c-dck">O maior congresso de oncologia clínica do Brasil acontece no segundo semestre. Dicas práticas para extrair o máximo de aprendizado e networking.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 1890</span>
+      <span class="c-stat">Comentários: 15</span>
+    </div>
+    <button class="c-rbtn" id="rb-n2">Ler</button>
+  </div>
+  <div class="card-body" id="bd-n2">
+    <p>O Congresso SBOC 2026 está confirmado para o segundo semestre, em São Paulo. Para quem é associado e nunca foi — ou foi poucas vezes —, este é um bom momento para pensar estrategicamente sobre como participar. Não é sobre assistir a todas as conferências. É sobre escolher bem e criar conexões que durem.</p>
+    <p>Minha recomendação número um: antes do evento, identifique três ou quatro temas nos quais você quer aprofundar conhecimento. Vá deliberadamente a esses painéis. Sente na frente, faça perguntas, aborde o palestrante no coffee break. Os congressos funcionam pelo que acontece nas margens.</p>
+    <p>Para residentes e jovens especialistas, o programa Young Oncologists é um diferencial do Congresso SBOC. Inclui mentoria estruturada, apresentação de casos, e acesso a sessões exclusivas com líderes da área.</p>
+    <p>Sobre os abstract sessions: vale a pena ler os livros de resumos antes do evento e marcar os abstracts brasileiros relevantes para sua prática. Ver dados de estudos nacionais apresentados pela primeira vez tem valor que os grandes trials internacionais não substituem.</p>
+  </div>
+  <div class="iz-wrap" id="iz-n2" data-id="n2"></div>
+</div>
+
+<div class="acard" id="card-n3">
+  <div class="card-meta">
+    <span class="c-tag">Notícias &amp; Eventos</span>
+    <span class="c-by">Por <b>Dr. Rafael Andrade</b></span>
+    <span class="c-alvl" style="color:#D07820;border-color:#D07820">Autor</span>
+    <span class="c-time">1 semana atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">ASCO 2025: os abstracts que importam para a prática oncológica brasileira</div>
+    <div class="c-dck">Da cobertura da SBOC no ASCO 2025: uma seleção comentada dos estudos com maior relevância para a oncologia clínica no contexto do sistema de saúde brasileiro.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 1020</span>
+      <span class="c-stat">Comentários: 8</span>
+    </div>
+    <button class="c-rbtn" id="rb-n3">Ler</button>
+  </div>
+  <div class="card-body" id="bd-n3">
+    <p>A SBOC realizou cobertura do ASCO 2025 com equipe de oncologistas brasileiros comentando os principais abstracts em tempo real. Compilei os estudos mais relevantes para a prática no contexto brasileiro — levando em conta não apenas o impacto científico, mas a aplicabilidade no SUS e nos planos de saúde nacionais.</p>
+    <p>Em câncer colorretal, o BREAKWATER foi o abstract mais discutado: avaliou encorafenibe + binimetinibe + cetuximabe em primeira linha para pacientes com mutação BRAF V600E. O ponto prático: BRAF deve ser testado em todos os pacientes com CRC metastático desde o diagnóstico.</p>
+    <p>Em câncer de mama, o DESTINY-Breast09 confirmou o papel de T-DXd em HER2-positivo de primeira linha, com dados de sobrevida global que devem acelerar as discussões de incorporação no Brasil. O INCA e as sociedades médicas têm papel central em levar esses dados aos órgãos regulatórios e pagadores.</p>
+    <p>A cobertura completa do ASCO pela SBOC está disponível na OncoAcademy, com vídeos comentados por tema. Para quem não conseguiu acompanhar em tempo real, é um recurso valioso de atualização.</p>
+  </div>
+  <div class="iz-wrap" id="iz-n3" data-id="n3"></div>
+</div>
+
+<div class="acard" id="card-n4">
+  <div class="card-meta">
+    <span class="c-tag">Notícias &amp; Eventos</span>
+    <span class="c-by">Por <b>Dra. Ana Lúcia Motta</b></span>
+    <span class="c-alvl" style="color:#666;border-color:#666">Distribuidora</span>
+    <span class="c-time">10 dias atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Terminei a residência: e agora? Reflexões de quem está prestes a descobrir</div>
+    <div class="c-dck">O programa "Terminei a Residência: e Agora?" da SBOC me ajudou a pensar sobre os próximos passos. Compartilho o que ficou.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 640</span>
+      <span class="c-stat">Comentários: 10</span>
+    </div>
+    <button class="c-rbtn" id="rb-n4">Ler</button>
+  </div>
+  <div class="card-body" id="bd-n4">
+    <p>Estou no último trimestre da residência em oncologia clínica. A pergunta "e agora?" está cada vez mais presente. O programa homônimo da SBOC foi um dos recursos mais honestos que encontrei para pensar sobre essa transição.</p>
+    <p>O que mais me impactou foi a conversa sobre como escolher o primeiro emprego. A pressão financeira pós-residência é real, e ela tende a empurrar os recém-formados para o primeiro vínculo disponível — sem considerar adequação à especialização desejada ou alinhamento com projeto de carreira.</p>
+    <p>Os speakers foram diretos sobre algo raramente dito: o primeiro emprego não precisa ser o emprego dos sonhos, mas deve avançar alguma dimensão do projeto de carreira — seja construir uma carteira de pacientes, entrar em um ambiente de pesquisa, ou estar em uma cidade com oferta de fellowships.</p>
+    <p>Para quem está na mesma situação: o programa está disponível na OncoAcademy e tem formato assíncrono. Recomendo especialmente as sessões sobre contratos, imposto de renda MEI para médicos, e como negociar remuneração.</p>
+  </div>
+  <div class="iz-wrap" id="iz-n4" data-id="n4"></div>
+</div>
+
+<div class="acard" id="card-n5">
+  <div class="card-meta">
+    <span class="c-tag">Notícias &amp; Eventos</span>
+    <span class="c-by">Por <b>Enf. Márcia Oliveira</b></span>
+    <span class="c-alvl" style="color:#D07820;border-color:#D07820">Autora</span>
+    <span class="c-time">2 semanas atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Prêmio SBOC 2025: reconhecimento à navegação de pacientes finalmente na agenda</div>
+    <div class="c-dck">O Prêmio SBOC 2025 incluiu pela primeira vez uma categoria para profissionais não-médicos da oncologia. Por que isso importa.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 520</span>
+      <span class="c-stat">Comentários: 7</span>
+    </div>
+    <button class="c-rbtn" id="rb-n5">Ler</button>
+  </div>
+  <div class="card-body" id="bd-n5">
+    <p>O Prêmio SBOC 2025 trouxe uma novidade: pela primeira vez, uma categoria foi destinada a profissionais não-médicos da oncologia. A premiação reconheceu um projeto de navegação de pacientes desenvolvido por equipe multiprofissional em um hospital público do interior de São Paulo.</p>
+    <p>A oncologia de qualidade é, por definição, multiprofissional. Quando os prêmios reconhecem apenas médicos, transmitem uma mensagem equivocada sobre quem faz a oncologia acontecer. Enfermeiras gerenciam toxicidades, farmacêuticos garantem segurança das dispensações, psicólogos trabalham a adesão.</p>
+    <p>A inclusão de profissionais não-médicos no Prêmio SBOC é também estrategicamente inteligente: demonstra à sociedade que a SBOC representa o campo da oncologia clínica — não apenas a categoria médica. Isso amplia a legitimidade em discussões de política pública onde o foco deve ser no cuidado ao paciente.</p>
+    <p>Para profissionais não-médicos que atuam em oncologia e ainda não são associados da SBOC: desde 2024 a sociedade tem modalidades de associação para múltiplos perfis profissionais. Os benefícios de acesso à OncoAcademy, à biblioteca virtual e às diretrizes valem a pena.</p>
+  </div>
+  <div class="iz-wrap" id="iz-n5" data-id="n5"></div>
+</div>
+
+</div><!-- end section-noticias -->
+
+<!-- ═══════ PREVENÇÃO & DIAGNÓSTICO ═══════ -->
+<div id="section-prevencao" style="display:none">
+
+<div class="acard" id="card-v1">
+  <div class="card-meta">
+    <span class="c-tag">Prevenção &amp; Diagnóstico</span>
+    <span class="c-by">Por <b>Dra. Beatriz Tavares</b></span>
+    <span class="c-alvl" style="color:#E05C10;border-color:#E05C10">Palestrante</span>
+    <span class="c-time">1 dia atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Presidente da SBOC defende prevenção e diagnóstico precoce no Congresso Nacional</div>
+    <div class="c-dck">Dra. Clarissa Baldotto representou a SBOC em audiência na Câmara dos Deputados. Os pontos centrais da fala e o que significa para a política oncológica brasileira.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 2780</span>
+      <span class="c-stat">Comentários: 20</span>
+    </div>
+    <button class="c-rbtn" id="rb-v1">Ler</button>
+  </div>
+  <div class="card-body" id="bd-v1">
+    <p>A presidente da SBOC, Dra. Clarissa Baldotto, participou de audiência pública na Câmara dos Deputados em fevereiro de 2026, defendendo o fortalecimento da Política Nacional de Prevenção e Controle do Câncer. O argumento central foi direto: o Brasil tem capacidade técnica para tratar câncer com padrão de excelência, mas não tem um sistema de rastreamento que leve essa capacidade até as populações que mais precisam.</p>
+    <p>Um dado que ela apresentou e que merece destaque: o câncer de colo de útero — que é prevenível e rastreável — mata mais de 7.000 mulheres por ano no Brasil. Países com cobertura vacinal e de rastreamento equivalentes têm mortalidade uma fração dessa. A diferença não está na qualidade do tratamento. Está na detecção precoce.</p>
+    <p>A SBOC propôs ao Congresso três medidas prioritárias: ampliação da cobertura do Papanicolau para 80% da população-alvo nos próximos três anos; criação de programa nacional de rastreamento de câncer de cólon com colonoscopia em populações de risco; e regulamentação do acesso a BRCA testing para mulheres com história familiar de câncer de mama e ovário no SUS.</p>
+    <p>O posicionamento completo da SBOC, incluindo as propostas legislativas, está disponível na seção Posicionamentos do portal. Para oncologistas que têm pacientes em situação de rastreamento insuficiente, oferece argumentos para usar em discussões com gestores de saúde locais.</p>
+  </div>
+  <div class="iz-wrap" id="iz-v1" data-id="v1"></div>
+</div>
+
+<div class="acard" id="card-v2">
+  <div class="card-meta">
+    <span class="c-tag">Prevenção &amp; Diagnóstico</span>
+    <span class="c-by">Por <b>Dr. Cid</b></span>
+    <span class="c-alvl" style="color:#E05C10;border-color:#E05C10">Palestrante</span>
+    <span class="c-time">4 dias atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Rastreamento de câncer colorretal: o que recomendar e quando — atualização 2026</div>
+    <div class="c-dck">As recomendações de rastreamento de câncer colorretal evoluíram. Colonoscopia não é mais a única nem necessariamente a primeira opção. Um guia prático para o oncologista.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 1650</span>
+      <span class="c-stat">Comentários: 12</span>
+    </div>
+    <button class="c-rbtn" id="rb-v2">Ler</button>
+  </div>
+  <div class="card-body" id="bd-v2">
+    <p>O rastreamento de câncer colorretal passou por revisão significativa nas diretrizes internacionais nos últimos três anos. Para indivíduos de risco médio, a USPSTF e a ACS recomendam iniciar rastreamento aos 45 anos — a idade foi reduzida de 50 anos em 2021, pela tendência de aumento de incidência em adultos jovens.</p>
+    <p>As opções validadas incluem: colonoscopia a cada 10 anos; teste de sangue oculto fecal altamente sensível (FIT) anual; ou sigmoidoscopia flexível a cada 5 anos com FIT anual. A colonoscopia permanece o padrão-ouro para diagnóstico e seguimento de lesões, mas não é mais indicada como primeira etapa em todos os pacientes de risco médio.</p>
+    <p>No contexto brasileiro, o FIT anual tem potencial especial: é de baixo custo, não requer preparo intestinal ou sedação, e pode ser realizado em unidades básicas de saúde. Para populações com baixo acesso a colonoscopia, o FIT seguido de colonoscopia nos positivos é uma estratégia custo-efetiva demonstrada na literatura.</p>
+    <p>Para pacientes de alto risco — com síndrome de Lynch, PAF, história familiar de CCR em familiar de primeiro grau antes dos 60 anos — a colonoscopia permanece a estratégia de escolha, com intervalos encurtados conforme estratificação. A Diretriz SBOC de Câncer Colorretal 2025 dedica uma seção específica a rastreamento com algoritmos práticos de decisão.</p>
+  </div>
+  <div class="iz-wrap" id="iz-v2" data-id="v2"></div>
+</div>
+
+<div class="acard" id="card-v3">
+  <div class="card-meta">
+    <span class="c-tag">Prevenção &amp; Diagnóstico</span>
+    <span class="c-by">Por <b>Dra. Ana Lúcia Motta</b></span>
+    <span class="c-alvl" style="color:#B06030;border-color:#B06030">Comentarista</span>
+    <span class="c-time">1 semana atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Vacinação contra HPV: o que os oncologistas clínicos precisam saber e comunicar</div>
+    <div class="c-dck">O câncer relacionado ao HPV é prevenível. Mas oncologistas podem fazer mais do que recomendar a vacina — podem corrigir desinformação e aumentar cobertura na população que atendem.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 830</span>
+      <span class="c-stat">Comentários: 11</span>
+    </div>
+    <button class="c-rbtn" id="rb-v3">Ler</button>
+  </div>
+  <div class="card-body" id="bd-v3">
+    <p>Oncologistas clínicos atendem diariamente pacientes com cânceres relacionados ao HPV — colo de útero, orofaringe, ânus, vulva, vagina, pênis. Para muitos desses pacientes, a doença poderia ter sido prevenida. Isso nos dá uma responsabilidade que vai além do tratamento: a de sermos agentes ativos de prevenção primária.</p>
+    <p>O Brasil tem um dos maiores programas de vacinação HPV do mundo, com oferta gratuita no SUS para meninas de 9 a 14 anos e meninos de 11 a 14 anos, além de pessoas imunossuprimidas até 45 anos. Mas a cobertura tem caído nos últimos anos — e a principal causa não é falta de oferta, é hesitação vacinal alimentada por desinformação.</p>
+    <p>Como oncologista, você é uma das vozes mais credíveis que seus pacientes ouvem. Quando uma paciente com filha adolescente está em consulta, uma frase simples — "já vacinou sua filha contra HPV?" — pode ter impacto que uma campanha de mídia não consegue replicar.</p>
+    <p>Para pacientes adultos já com HPV, a vacina ainda tem papel: estudos recentes sugerem benefício em reduzir recorrências de lesões em pacientes tratados por NIC ou câncer anal. A SBOC integra o grupo VAI justamente para ampliar essa conversa na oncologia.</p>
+  </div>
+  <div class="iz-wrap" id="iz-v3" data-id="v3"></div>
+</div>
+
+<div class="acard" id="card-v4">
+  <div class="card-meta">
+    <span class="c-tag">Prevenção &amp; Diagnóstico</span>
+    <span class="c-by">Por <b>Dr. Rafael Andrade</b></span>
+    <span class="c-alvl" style="color:#D07820;border-color:#D07820">Autor</span>
+    <span class="c-time">10 dias atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Índice de Priorização de Medicamentos SBOC: como a sociedade orienta incorporações no SUS</div>
+    <div class="c-dck">O IPM-SBOC avalia e prioriza medicamentos para incorporação no sistema público de saúde. Entender como funciona é importante para quem defende o acesso dos pacientes.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 970</span>
+      <span class="c-stat">Comentários: 9</span>
+    </div>
+    <button class="c-rbtn" id="rb-v4">Ler</button>
+  </div>
+  <div class="card-body" id="bd-v4">
+    <p>O Índice de Priorização de Medicamentos da SBOC — IPM-SBOC — é um instrumento técnico desenvolvido para orientar o posicionamento da sociedade nas discussões de incorporação de novas tecnologias oncológicas no SUS, nos processos coordenados pela Conitec e pela Cosaúde/ANS.</p>
+    <p>A metodologia do IPM avalia cada medicamento em quatro dimensões: magnitude do benefício clínico (usando a ESMO-MCBS como referência); disponibilidade de alternativas terapêuticas no SUS; impacto orçamentário estimado; e custo-efetividade quando dados são disponíveis.</p>
+    <p>Na prática, o IPM tem dois propósitos: ajudar a SBOC a tomar posições baseadas em evidência nas consultas públicas da Conitec — onde a participação das sociedades médicas é formalmente prevista — e oferecer referencial técnico para oncologistas que querem fazer advocacy qualificado pelo acesso dos seus pacientes.</p>
+    <p>Quando um oncologista precisa argumentar junto ao gestor de saúde estadual sobre a necessidade de incorporação de um medicamento, ter o documento do IPM com a análise técnica da SBOC é muito mais efetivo do que argumentos baseados em casos individuais. O IPM atualizado está no portal da SBOC, na seção Incorporações de Tecnologias.</p>
+  </div>
+  <div class="iz-wrap" id="iz-v4" data-id="v4"></div>
+</div>
+
+<div class="acard" id="card-v5">
+  <div class="card-meta">
+    <span class="c-tag">Prevenção &amp; Diagnóstico</span>
+    <span class="c-by">Por <b>Enf. Márcia Oliveira</b></span>
+    <span class="c-alvl" style="color:#666;border-color:#666">Distribuidora</span>
+    <span class="c-time">3 semanas atrás</span>
+  </div>
+  <div class="card-titles">
+    <div class="c-ttl">Calendário da Oncologia: como usar as datas de conscientização no cuidado ao paciente</div>
+    <div class="c-dck">Campanhas como Outubro Rosa e Novembro Azul têm potencial real de impacto preventivo — mas precisam ser usadas com inteligência clínica, não apenas como marketing institucional.</div>
+  </div>
+  <div class="card-foot">
+    <div class="c-stats">
+      <span class="c-stat">Leituras: 380</span>
+      <span class="c-stat">Comentários: 5</span>
+    </div>
+    <button class="c-rbtn" id="rb-v5">Ler</button>
+  </div>
+  <div class="card-body" id="bd-v5">
+    <p>O Calendário da Oncologia da SBOC organiza as principais datas e campanhas de conscientização ao longo do ano. Na minha prática como navigadora, aprendi a usar essas datas estrategicamente — não apenas como momento de posts nas redes sociais do hospital, mas como oportunidade real de intervenção.</p>
+    <p>Durante o Outubro Rosa, identifico proativamente em minha lista de pacientes as mulheres que estão atrasadas na mamografia de seguimento ou que nunca realizaram rastreamento de câncer de colo. O mês de conscientização me dá um contexto natural para abordar o tema sem que pareça uma crítica individual.</p>
+    <p>O mesmo vale para o Novembro Azul e o rastreamento de câncer de próstata — um tema que tem nuances importantes (o PSA não é recomendado como rastreamento universal, mas é indicado após discussão informada em grupos de risco), e que o mês temático facilita abordar de forma mais aberta.</p>
+    <p>Minha recomendação: incluam o Calendário da Oncologia no planejamento semestral de ações do serviço. Não para marketing — para as ações clínicas. As campanhas de conscientização funcionam melhor quando têm um momento de cuidado concreto associado a elas.</p>
+  </div>
+  <div class="iz-wrap" id="iz-v5" data-id="v5"></div>
+</div>
+
+</div><!-- end section-prevencao -->
+
+  </div><!-- end card-list -->
+</div><!-- end scr-feed -->
+
+<!-- ═══════════════════════════ SCORE SCREEN ═══════════════════════════ -->
+<div id="scr-score" class="scr">
+  <div class="score-pg">
+    <div class="score-card">
+      <div class="sc-hdr">
+        <span class="sc-ttl">Minha Autoridade</span>
+        <span class="sc-top" id="scTop">Pesquisa Clínica</span>
+      </div>
+      <div class="sc-body">
+        <div class="lvl-hero">
+          <div class="lvl-ring" id="scRing">
+            <div class="lvl-ri" id="scRi">N4</div>
+          </div>
+          <div>
+            <div class="lvl-nm" id="scNm">Autor</div>
+            <div class="lvl-sb" id="scSb">Nível 4 de 5</div>
+          </div>
+        </div>
+        <div class="pg-row">
+          <span class="pg-pts" id="scPts">0</span>
+          <span class="pg-lbl">pontos nesta vertical</span>
+        </div>
+        <div class="pg-track"><div class="pg-fill" id="scFill" style="width:0%"></div></div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+          <span class="pg-note" id="scNote"></span>
+          <span class="pg-nxt" id="scNxt"></span>
+        </div>
+        <div class="log-ttl">Atividade Recente</div>
+        <div class="log-list" id="scLog">
+          <div class="log-mt">Nenhuma atividade ainda nesta vertical.</div>
+        </div>
+      </div>
+    </div>
+    <div class="all-card">
+      <div class="all-hdr">Todas as Verticais</div>
+      <div id="allTopics"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ GUIDE SCREEN ═══════════════════════════ -->
+<div id="scr-guide" class="scr">
+  <div class="guide-pg" id="guidePg"></div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bnav">
+  <button class="bnav-btn on" id="bn-feed">
+    <span class="bnav-ic">📰</span>
+    <span class="bnav-lb">Feed</span>
+  </button>
+  <button class="bnav-btn" id="bn-score">
+    <span class="bnav-ic">⭐</span>
+    <span class="bnav-lb">Score</span>
+  </button>
+  <button class="bnav-btn" id="bn-guide">
+    <span class="bnav-ic">📖</span>
+    <span class="bnav-lb">Guia</span>
+  </button>
+</nav>
+
+<div id="toast"></div>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   SBOC/KODES — ENGINE
+   Architecture: all handlers via addEventListener in window.onload
+   No inline onclick anywhere
+═══════════════════════════════════════════════════════ */
+
+/* ── LEVEL SYSTEM ── */
+var LR   = {enthusiast:1,distributor:2,commentator:3,author:4,speaker:5};
+var LU   = {enthusiast:0,distributor:150,commentator:400,author:900,speaker:2000};
+var LN   = ["enthusiast","distributor","commentator","author","speaker"];
+var LNUM = {enthusiast:"Nível 1 de 5",distributor:"Nível 2 de 5",commentator:"Nível 3 de 5",author:"Nível 4 de 5",speaker:"Nível 5 de 5"};
+var LL   = {enthusiast:"Entusiasta",distributor:"Distribuidor",commentator:"Comentarista",author:"Autor",speaker:"Palestrante"};
+var LS   = {distributor:"Você pode agora compartilhar e repassar conteúdo.",commentator:"Você pode agora escrever comentários.",author:"Você pode agora publicar artigos.",speaker:"Acesso editorial completo desbloqueado."};
+var LC   = {enthusiast:"#888",distributor:"#666",commentator:"#B06030",author:"#D07820",speaker:"#E05C10"};
+var PTS  = {like:2,dislike:2,forward:5,shareOutside:8,addDigest:3,comment:15,publishResponse:30,publishArticle:40,inviteDebate:25,featureContent:15,scheduleSeries:50};
+
+/* ── USERS ── */
+var USERS = [
+  {id:"cid", name:"Dr. Cid",    handle:"@dr.cid",   role:"Oncologista Clínico Sênior",
+   levels:{pesquisa:"speaker",mulheres:"speaker",diversidade:"speaker",noticias:"speaker",prevencao:"speaker"}},
+  {id:"bea", name:"Dra. Beatriz Tavares", handle:"@b.tavares",role:"Oncologista — Professora EBO",
+   levels:{pesquisa:"speaker",mulheres:"speaker",diversidade:"commentator",noticias:"author",prevencao:"speaker"}},
+  {id:"raf", name:"Dr. Rafael Andrade",  handle:"@r.andrade",role:"Pesquisador Clínico — INCA",
+   levels:{pesquisa:"author",mulheres:"distributor",diversidade:"author",noticias:"commentator",prevencao:"author"}},
+  {id:"ana", name:"Dra. Ana Lúcia Motta",handle:"@a.motta",  role:"Residente em Oncologia Clínica",
+   levels:{pesquisa:"commentator",mulheres:"commentator",diversidade:"commentator",noticias:"distributor",prevencao:"distributor"}},
+  {id:"mar", name:"Enf. Márcia Oliveira",handle:"@m.oliveira",role:"Enfermeira Oncológica",
+   levels:{pesquisa:"distributor",mulheres:"author",diversidade:"commentator",noticias:"distributor",prevencao:"commentator"}}
+];
+
+var TOPICS = ["pesquisa","mulheres","diversidade","noticias","prevencao"];
+var TOPIC_LABELS = {
+  pesquisa:"Pesquisa Clínica",mulheres:"Mulheres na Oncologia",
+  diversidade:"Diversidade na Oncologia",noticias:"Notícias & Eventos",prevencao:"Prevenção & Diagnóstico"
+};
+
+/* ── STATE ── */
+var uid   = "cid";
+var topic = "pesquisa";
+var store = {};
+
+/* ── SAMPLE COMMENTS ── */
+var SAMPLE_CMT_DATA = [
+  {name:"Dra. Beatriz Tavares",  level:"speaker",    time:"há 3h",
+   texts:["Excelente ponto — essa questão está no centro do debate que tivemos na última reunião do comitê científico. Os dados que você cita são consistentes com o que vemos na prática clínica.",
+          "Concordo com a análise. Vale destacar também o impacto para os centros fora dos grandes eixos urbanos, onde o acesso ainda é desigual."]},
+  {name:"Dr. Rafael Andrade",   level:"author",     time:"há 5h",
+   texts:["A questão do acesso é fundamental aqui. No INCA, temos visto esse perfil de paciente com frequência crescente — os dados que você apresenta corroboram nossa experiência clínica.",
+          "Publicamos dados preliminares sobre isso no BJO no ano passado. Se quiser, posso compartilhar o link aqui no Kodes."]},
+  {name:"Dra. Ana Lúcia Motta", level:"commentator",time:"há 8h",
+   texts:["Muito obrigada por trazer esse tema. Como residente, raramente temos espaço para discutir essas questões estruturais durante o treinamento.",
+          "Tenho uma dúvida sobre a aplicação prática: como vocês abordam esses casos em serviços com equipe reduzida?"]},
+  {name:"Enf. Márcia Oliveira", level:"author",     time:"há 12h",
+   texts:["Na perspectiva da navegação, esse ponto é central. A barreira que você descreve é exatamente o que tentamos endereçar no nosso programa.",
+          "Ótimo artigo. Vou compartilhar com a equipe multiprofissional do meu serviço — é exatamente o tipo de conteúdo que precisamos acessar mais facilmente."]},
+  {name:"Dr. Cid",     level:"author",     time:"há 1 dia",
+   texts:["Boa análise. Eu acrescentaria que o contexto regulatório brasileiro adiciona uma camada de complexidade que os estudos internacionais não capturam bem.",
+          "Esse dado específico merece atenção — considerando as diferenças regionais no Brasil, onde a aplicação prática varia muito."]}
+];
+
+/* ── INIT STORE ── */
+function initStore() {
+  USERS.forEach(function(u) {
+    store[u.id] = {};
+    TOPICS.forEach(function(t) {
+      store[u.id][t] = {pts:0, log:[]};
+    });
+  });
+}
+
+/* ── HELPERS ── */
+function getUser() {
+  for (var i=0;i<USERS.length;i++){if(USERS[i].id===uid)return USERS[i];}
+  return null;
+}
+function ini(nm) { return nm.split(" ").map(function(w){return w[0];}).join("").slice(0,2).toUpperCase(); }
+function ptsToLvl(p) {
+  if (p>=2000) return "speaker";
+  if (p>=900)  return "author";
+  if (p>=400)  return "commentator";
+  if (p>=150)  return "distributor";
+  return "enthusiast";
+}
+function effLvl() {
+  var u=getUser(); if (!u) return "enthusiast";
+  var base=(u.levels && u.levels[topic]) || "enthusiast";
+  var s=store[uid] && store[uid][topic];
+  var earned=s ? ptsToLvl(s.pts) : "enthusiast";
+  return LR[earned]>LR[base] ? earned : base;
+}
+function effRank() { return LR[effLvl()]; }
+function el(id)    { return document.getElementById(id); }
+function css(el,s) { el.style.cssText=s; }
+
+/* ── TOAST ── */
+function toast(msg) {
+  var t=el("toast"); t.textContent=msg; t.classList.add("on");
+  clearTimeout(t._t); t._t=setTimeout(function(){t.classList.remove("on");},2600);
+}
+
+/* ── POINTS ── */
+function addPts(action, label) {
+  var p=PTS[action]||0; if (!p) return;
+  var s=store[uid][topic], prev=ptsToLvl(s.pts);
+  s.pts+=p; s.log.unshift({label:label,pts:p}); if(s.log.length>20)s.log.pop();
+  var nxt=ptsToLvl(s.pts);
+  if (LR[nxt]>LR[prev]) {
+    el("luNm").textContent=LL[nxt];
+    el("luDs").textContent=LS[nxt]||"";
+    el("luBox").classList.add("on");
+    document.querySelectorAll(".iz-wrap.on").forEach(function(z){renderIZ(z.dataset.id);});
+  }
+  updateTopbar(); updateDrawer();
+}
+function closeLU() { el("luBox").classList.remove("on"); }
+
+/* ── TOPBAR ── */
+function updateTopbar() {
+  var lvl=effLvl(), col=LC[lvl], u=getUser();
+  var tag=el("tLvl"); tag.textContent=LL[lvl]; tag.style.color=col; tag.style.borderColor=col;
+  var initials=u ? ini(u.name) : "CF";
+  el("tAv").textContent=initials;
+  el("spAv").textContent=initials;
+  el("spNm").textContent=u ? u.name : "";
+}
+
+/* ── DRAWER ── */
+function updateDrawer() {
+  var u=getUser(); if (!u) return;
+  TOPICS.forEach(function(t) {
+    var b=u.levels[t], e=ptsToLvl(store[uid][t].pts), lv=LR[e]>LR[b]?e:b, col=LC[lv];
+    var bd=el("db-"+t); if(bd){bd.textContent=LL[lv];bd.style.color=col;bd.style.borderColor=col;}
+    var di=el("di-"+t); if(di) di.className="drw-item"+(t===topic?" on":"");
+  });
+}
+function toggleDrawer() {
+  var open=el("drawer").classList.contains("open");
+  el("drawer").classList.toggle("open",!open);
+  el("drwMask").classList.toggle("open",!open);
+  el("burger").classList.toggle("open",!open);
+}
+function closeDrawer() {
+  el("drawer").classList.remove("open");
+  el("drwMask").classList.remove("open");
+  el("burger").classList.remove("open");
+}
+
+/* ── TOPIC ── */
+function pickTopic(t) {
+  topic=t;
+  closeDrawer();
+  renderFeed();
+  updateTopbar();
+  updateDrawer();
+  goScr("feed");
+}
+
+/* ── USER SHEET ── */
+function openSheet()  { el("sheet").classList.add("open"); el("shMask").classList.add("open"); }
+function closeSheet() { el("sheet").classList.remove("open"); el("shMask").classList.remove("open"); }
+function pickUser(id) {
+  uid=id;
+  document.querySelectorAll(".sh-user").forEach(function(u){u.classList.remove("on");});
+  var su=el("su-"+id); if(su) su.classList.add("on");
+  closeSheet(); updateTopbar(); updateDrawer(); closeAllCards();
+  renderFeed();
+}
+
+/* ── SCREENS ── */
+function goScr(name) {
+  document.querySelectorAll(".scr").forEach(function(s){s.classList.remove("on");});
+  document.querySelectorAll(".bnav-btn").forEach(function(b){b.classList.remove("on");});
+  var s=el("scr-"+name); if(s) s.classList.add("on");
+  var b=el("bn-"+name);  if(b) b.classList.add("on");
+  if (name==="score") renderScore();
+  if (name==="guide") renderGuide();
+}
+
+/* ── CARDS ── */
+function closeAllCards() {
+  document.querySelectorAll(".card-body.on").forEach(function(b){b.classList.remove("on");});
+  document.querySelectorAll(".iz-wrap.on").forEach(function(z){z.classList.remove("on"); z.innerHTML="";});
+  document.querySelectorAll(".c-rbtn").forEach(function(b){b.textContent="Ler";});
+}
+function toggleCard(id) {
+  var body=el("bd-"+id), iz=el("iz-"+id), btn=el("rb-"+id);
+  if (!body) return;
+  var open=body.classList.contains("on");
+  closeAllCards();
+  if (!open) {
+    body.classList.add("on"); iz.classList.add("on"); btn.textContent="Fechar";
+    renderIZ(id);
+    setTimeout(function(){iz.scrollIntoView({behavior:"smooth",block:"nearest"});},60);
+  }
+}
+
+/* ── FEED ── */
+function renderFeed() {
+  TOPICS.forEach(function(t) {
+    var sec=document.getElementById("section-"+t);
+    if (sec) sec.style.display=(t===topic)?"block":"none";
+  });
+  var hdr=el("feed-topic-header");
+  if (hdr) hdr.textContent=TOPIC_LABELS[topic]||topic;
+  var cnt=el("feed-topic-count");
+  var arts=document.querySelectorAll("#section-"+topic+" .acard");
+  if (cnt) cnt.textContent=arts.length+" artigos";
+}
+
+/* ── COMMENTS ── */
+function sampleCmts(aid) {
+  var seed=aid.charCodeAt(0)+aid.charCodeAt(1);
+  var result=[];
+  for (var i=0;i<3;i++) {
+    var idx=(seed+i)%SAMPLE_CMT_DATA.length;
+    var d=SAMPLE_CMT_DATA[idx];
+    result.push({name:d.name,level:d.level,time:d.time,text:d.texts[(seed+i)%d.texts.length]});
+  }
+  return result;
+}
+function mkCmtEl(cm) {
+  var col=LC[cm.level]||"#888";
+  var w=document.createElement("div");
+  css(w,"padding:10px 0;border-bottom:1px solid #f0f0f0");
+  w.innerHTML=
+    "<div style='display:flex;align-items:center;gap:7px;margin-bottom:5px'>"+
+      "<div style='width:22px;height:22px;border-radius:50%;border:1.5px solid "+col+";background:rgba(0,0,0,0.03);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:"+col+"'>"+
+        cm.name.split(" ").map(function(w){return w[0];}).join("").slice(0,2)+"</div>"+
+      "<span style='font-size:12px;font-weight:700;color:#333'>"+cm.name+"</span>"+
+      "<span style='font-family:var(--fm);font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 5px;border:1px solid "+col+";border-radius:3px;color:"+col+"'>"+LL[cm.level]||cm.level+"</span>"+
+      "<span style='font-family:var(--fm);font-size:9px;color:#aaa;margin-left:auto'>"+cm.time+"</span>"+
+    "</div>"+
+    "<p style='font-size:13px;color:#444;line-height:1.6;margin:0'>"+cm.text+"</p>";
+  return w;
+}
+function mkTA(id,ph,rows) {
+  var ta=document.createElement("textarea");
+  css(ta,"width:100%;padding:10px;border:1px solid #e0e0e0;border-radius:7px;font-size:14px;resize:vertical;background:#fff;line-height:1.55");
+  ta.id=id; ta.placeholder=ph; ta.rows=rows; return ta;
+}
+function mkInput(id,ph) {
+  var inp=document.createElement("input");
+  css(inp,"width:100%;padding:10px;border:1px solid #e0e0e0;border-radius:7px;font-size:14px;background:#fff;margin-bottom:8px");
+  inp.id=id; inp.placeholder=ph; inp.type="text"; return inp;
+}
+function mkPostBtn(label,fn) {
+  var b=document.createElement("button");
+  css(b,"padding:10px 18px;background:var(--orange);color:#fff;border:none;border-radius:7px;font-size:13px;font-weight:700;min-height:42px;cursor:pointer");
+  b.textContent=label; b.addEventListener("click",fn); return b;
+}
+function mkDraftBtn() {
+  var b=document.createElement("button");
+  css(b,"padding:10px 14px;background:#f5f5f5;color:#666;border:1px solid #e0e0e0;border-radius:7px;font-size:13px;font-weight:600;min-height:42px;cursor:pointer");
+  b.textContent="Rascunho"; b.addEventListener("click",function(){toast("Rascunho salvo.");});
+  return b;
+}
+function mkSectionHdr(label,pts) {
+  var h=document.createElement("div");
+  css(h,"padding:9px 13px;background:#f5f5f5;border-bottom:1px solid #e0e0e0;display:flex;align-items:center;justify-content:space-between");
+  h.innerHTML="<span style='font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#555'>"+label+"</span>"+
+    "<span style='font-family:var(--fm);font-size:9px;color:var(--orange);font-weight:700'>"+pts+"</span>";
+  return h;
+}
+
+/* ── SUBMIT ── */
+function submitCmt(aid,taId) {
+  var ta=el(taId); if(!ta||!ta.value.trim()){toast("Escreva algo primeiro.");return;}
+  var txt=ta.value.trim(); ta.value="";
+  var cl=el("cl-"+aid);
+  if (cl) {
+    var u=getUser();
+    var col=LC[effLvl()]||"#888";
+    var ne=document.createElement("div");
+    css(ne,"padding:10px 0;border-bottom:1px solid #f0f0f0");
+    ne.innerHTML=
+      "<div style='display:flex;align-items:center;gap:7px;margin-bottom:5px'>"+
+        "<div style='width:22px;height:22px;border-radius:50%;border:1.5px solid "+col+";background:var(--odim);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:"+col+"'>"+ini(u?u.name:"")+"</div>"+
+        "<span style='font-size:12px;font-weight:700;color:#333'>"+(u?u.name:"")+"</span>"+
+        "<span style='font-family:var(--fm);font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 5px;border:1px solid "+col+";border-radius:3px;color:"+col+"'>"+LL[effLvl()]+"</span>"+
+        "<span style='font-family:var(--fm);font-size:9px;color:#aaa;margin-left:auto'>agora</span>"+
+      "</div>"+
+      "<p style='font-size:13px;color:#444;line-height:1.6;margin:0'>"+txt+"</p>";
+    cl.prepend(ne);
+  }
+  addPts("comment","Comentário publicado");
+  toast("Comentário publicado +15 pts");
+}
+function submitArt(aid) {
+  var t=el("at-"+aid), b=el("ab-"+aid);
+  if(!t||!t.value.trim()){toast("Adicione um título primeiro.");return;}
+  if(!b||!b.value.trim()){toast("Escreva algum conteúdo primeiro.");return;}
+  var title=t.value.trim(); t.value=""; b.value="";
+  addPts("publishResponse","Artigo de resposta publicado");
+  toast('"'+title.slice(0,35)+'…" publicado +30 pts');
+}
+
+/* ══════════════════════════════════════════════════════
+   RENDER IZ — Interaction Zone (the heart of Kodes)
+   Levels: N1=enthusiast, N2=distributor, N3=commentator,
+           N4=author, N5=speaker
+══════════════════════════════════════════════════════ */
+function renderIZ(aid) {
+  var rank=effRank(), lvl=effLvl(), col=LC[lvl];
+  var iz=el("iz-"+aid); if (!iz) return;
+  iz.innerHTML=""; iz.style.display="block"; iz.style.borderTop="1px solid #e0e0e0";
+
+  /* Header */
+  var hdr=document.createElement("div");
+  css(hdr,"padding:9px 13px;background:#f5f5f5;border-bottom:1px solid #e0e0e0;"+
+    "display:flex;align-items:center;justify-content:space-between");
+  hdr.innerHTML=
+    "<span style='font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#555'>Sua Contribuição</span>"+
+    "<span style='font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;"+
+      "padding:3px 8px;border:1px solid "+col+";border-radius:3px;color:"+col+"'>"+LL[lvl]+"</span>";
+  iz.appendChild(hdr);
+
+  /* N1/N2 — Like/Dislike */
+  var lr=document.createElement("div");
+  css(lr,"padding:11px 13px;display:flex;gap:8px");
+  function mkLikeBtn(type,emoji,label,n) {
+    var btn=document.createElement("button");
+    css(btn,"flex:1;display:flex;align-items:center;justify-content:center;gap:7px;"+
+      "padding:11px 10px;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:8px;"+
+      "font-size:13px;font-weight:600;color:#666;min-height:46px;cursor:pointer");
+    btn.innerHTML=emoji+" "+label+" <span style='font-size:10px;color:#aaa'>"+n+"</span>";
+    btn.dataset.on="0"; btn.dataset.type=type;
+    btn.addEventListener("click",function(){
+      var already=btn.dataset.on==="1";
+      lr.querySelectorAll("button").forEach(function(b){
+        b.dataset.on="0";
+        css(b,"flex:1;display:flex;align-items:center;justify-content:center;gap:7px;"+
+          "padding:11px 10px;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:8px;"+
+          "font-size:13px;font-weight:600;color:#666;min-height:46px;cursor:pointer");
+      });
+      if (!already) {
+        btn.dataset.on="1";
+        css(btn,"flex:1;display:flex;align-items:center;justify-content:center;gap:7px;"+
+          "padding:11px 10px;background:var(--odim);border:1px solid var(--obrd);border-radius:8px;"+
+          "font-size:13px;font-weight:600;color:var(--orange);min-height:46px;cursor:pointer");
+        addPts(type,type==="like"?"Curtiu":"Não curtiu");
+        toast((type==="like"?"Curtiu":"Não curtiu")+" +2 pts");
+      }
+    });
+    return btn;
+  }
+  lr.appendChild(mkLikeBtn("like","👍","Útil",182));
+  lr.appendChild(mkLikeBtn("dislike","🤔","Questionar",14));
+  iz.appendChild(lr);
+
+  /* N2 — Share */
+  if (rank >= 2) {
+    var sw=document.createElement("div");
+    css(sw,"padding:9px 13px;border-top:1px solid #e0e0e0");
+    sw.appendChild(mkSectionHdr("Distribuidor — Compartilhar","+5–8 pts"));
+    var swb=document.createElement("div");
+    css(swb,"padding:9px 13px");
+    function mkShareBtn(label,action,logLabel,primary) {
+      var b=document.createElement("button");
+      css(b,"width:100%;margin-bottom:6px;padding:11px 12px;border-radius:7px;font-size:10px;"+
+        "font-weight:600;text-align:center;min-height:42px;cursor:pointer;"+
+        (primary?"background:var(--odim);color:var(--orange);border:1px solid var(--obrd)":
+                  "background:#f5f5f5;color:#666;border:1px solid #e0e0e0"));
+      b.textContent=label;
+      b.addEventListener("click",function(){addPts(action,logLabel);toast(logLabel+" +"+PTS[action]+" pts");});
+      swb.appendChild(b);
+    }
+    mkShareBtn("↩ Repassar dentro do SBOC/Kodes","forward","Repassado no SBOC/Kodes",true);
+    mkShareBtn("↗ Compartilhar fora da plataforma","shareOutside","Compartilhado externamente",true);
+    mkShareBtn("☰ Adicionar ao digest","addDigest","Adicionado ao digest",false);
+    sw.appendChild(swb);
+    iz.appendChild(sw);
+  }
+
+  /* N3 — Comments */
+  if (rank >= 3) {
+    var cs=document.createElement("div"); cs.style.borderTop="1px solid #e0e0e0";
+    var ch=document.createElement("div");
+    css(ch,"padding:8px 13px;background:#f5f5f5;font-size:9px;letter-spacing:2px;"+
+      "text-transform:uppercase;color:#aaa;border-bottom:1px solid #e0e0e0");
+    var cmts=sampleCmts(aid); ch.textContent="Comentários ("+cmts.length+")";
+    cs.appendChild(ch);
+    var cl=document.createElement("div"); cl.id="cl-"+aid; cl.style.padding="0 13px";
+    cmts.forEach(function(cm){cl.appendChild(mkCmtEl(cm));}); cs.appendChild(cl);
+    if (rank === 3) {
+      var ci=document.createElement("div");
+      css(ci,"padding:11px 13px;border-top:1px solid #e0e0e0;background:#f5f5f5");
+      var ta=mkTA("cb-"+aid,"Escreva seu comentário…",3);
+      var fr=document.createElement("div");
+      css(fr,"display:flex;justify-content:flex-end;align-items:center;gap:9px;margin-top:8px");
+      fr.innerHTML="<span style='font-size:9px;color:#666'>+15 pts</span>";
+      fr.appendChild(mkPostBtn("Publicar",function(){submitCmt(aid,"cb-"+aid);}));
+      ci.appendChild(ta); ci.appendChild(fr); cs.appendChild(ci);
+    }
+    iz.appendChild(cs);
+  }
+
+  /* N4 Author — comment box */
+  if (rank >= 4) {
+    var acLabel=rank>=5?"◆ Palestrante — Escrever comentário":"✏ Autor — Escrever comentário";
+    var acBox=document.createElement("div"); acBox.style.borderTop="1px solid #e0e0e0";
+    acBox.appendChild(mkSectionHdr(acLabel,"+15 pts"));
+    var acIn=document.createElement("div");
+    css(acIn,"padding:11px 13px;background:#f5f5f5");
+    var acTa=mkTA("aw-"+aid,"Escreva seu comentário…",3);
+    var acFr=document.createElement("div");
+    css(acFr,"display:flex;justify-content:flex-end;margin-top:8px");
+    acFr.appendChild(mkPostBtn("Publicar",function(){submitCmt(aid,"aw-"+aid);}));
+    acIn.appendChild(acTa); acIn.appendChild(acFr); acBox.appendChild(acIn); iz.appendChild(acBox);
+  }
+
+  /* N4 Author — publish response */
+  if (rank >= 4) {
+    var apLabel=rank>=5?"◆ Palestrante — Publicar resposta":"✏ Autor — Publicar resposta";
+    var apBox=document.createElement("div"); apBox.style.borderTop="1px solid #e0e0e0";
+    apBox.appendChild(mkSectionHdr(apLabel,"+30 pts"));
+    var apIn=document.createElement("div");
+    css(apIn,"padding:11px 13px;background:#f5f5f5");
+    var apTi=mkInput("at-"+aid,"Título do seu artigo de resposta…");
+    var apTa=mkTA("ab-"+aid,"Escreva seu artigo de resposta…",4);
+    apTa.style.marginBottom="8px";
+    var apFr=document.createElement("div");
+    css(apFr,"display:flex;justify-content:flex-end;gap:8px");
+    apFr.appendChild(mkDraftBtn());
+    apFr.appendChild(mkPostBtn("Publicar →",function(){submitArt(aid);}));
+    apIn.appendChild(apTi); apIn.appendChild(apTa); apIn.appendChild(apFr);
+    apBox.appendChild(apIn); iz.appendChild(apBox);
+  }
+
+  /* N5 Speaker console */
+  if (rank >= 5) {
+    var spk=document.createElement("div"); spk.style.borderTop="1px solid #e0e0e0";
+    var sph=document.createElement("div");
+    css(sph,"padding:9px 13px;background:var(--odim);border-bottom:1px solid var(--obrd);"+
+      "display:flex;align-items:center;gap:7px");
+    sph.innerHTML="<span style='color:var(--orange);font-size:13px'>◆</span>"+
+      "<span style='font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--orange)'>Palestrante — Controles Editoriais</span>";
+    var spg=document.createElement("div");
+    css(spg,"padding:11px 13px;display:grid;grid-template-columns:1fr 1fr;gap:7px");
+    var spkItems=[
+      ["📣","Convidar para Debate","+25 pts","inviteDebate","Convidado para Debate"],
+      ["⭐","Destacar Conteúdo","+15 pts","featureContent","Conteúdo destacado"],
+      ["📅","Programar Série","+50 pts","scheduleSeries","Série programada"],
+      ["📊","Analytics","Dados de alcance",null,null]
+    ];
+    spkItems.forEach(function(sb){
+      var b=document.createElement("button");
+      css(b,"background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:11px 9px;"+
+        "text-align:left;min-height:68px;cursor:pointer");
+      b.innerHTML="<div style='font-size:16px;margin-bottom:4px'>"+sb[0]+"</div>"+
+        "<div style='font-size:11px;font-weight:700;margin-bottom:2px'>"+sb[1]+"</div>"+
+        "<div style='font-size:8px;color:#aaa'>"+sb[2]+"</div>";
+      if (sb[3]) {
+        b.addEventListener("click",(function(a,l){return function(){addPts(a,l);toast(l+" +"+PTS[a]+" pts");};})(sb[3],sb[4]));
+      } else {
+        b.addEventListener("click",function(){toast("Abrindo analytics…");});
+      }
+      spg.appendChild(b);
+    });
+    spk.appendChild(sph); spk.appendChild(spg); iz.appendChild(spk);
+  }
+
+  /* Lock notice for N1 */
+  if (rank < 2) {
+    var lk=document.createElement("div");
+    css(lk,"padding:14px 13px;text-align:center;border-top:1px solid #e0e0e0;background:#f5f5f5");
+    var need=Math.max(0,150-store[uid][topic].pts);
+    var msg=document.createElement("div");
+    css(msg,"font-size:10px;color:#aaa;line-height:1.6;margin-bottom:10px");
+    msg.innerHTML="Acumule <strong style='color:var(--orange)'>"+need+" pontos</strong> para desbloquear o compartilhamento.<br>Ou conclua sua avaliação KWIS em veracitas.com.br";
+    var lkb=document.createElement("button");
+    css(lkb,"font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--orange);"+
+      "background:var(--odim);border:1px solid var(--obrd);"+
+      "padding:8px 15px;border-radius:5px;min-height:38px;cursor:pointer");
+    lkb.textContent="Fazer Avaliação KWIS →";
+    lkb.addEventListener("click",function(){toast("Abrindo avaliação KWIS…");});
+    lk.appendChild(msg); lk.appendChild(lkb); iz.appendChild(lk);
+  }
+}
+
+/* ── SCORE ── */
+function renderScore() {
+  var s=store[uid][topic], pts=s.pts, lvl=effLvl(), rank=LR[lvl], col=LC[lvl];
+  var nxtName=LN[rank], curMin=LU[lvl], nxtMin=rank<5?LU[LN[rank]]:null;
+  el("scTop").textContent=TOPIC_LABELS[topic]||topic;
+  var ring=el("scRing"); ring.style.borderColor=col; ring.style.color=col;
+  el("scRi").textContent="N"+rank;
+  var nm=el("scNm"); nm.textContent=LL[lvl]; nm.style.color=col;
+  el("scSb").textContent=LNUM[lvl];
+  el("scPts").textContent=pts;
+  if (rank<5) {
+    var pct=Math.min(100,Math.max(0,((pts-curMin)/(nxtMin-curMin))*100));
+    el("scFill").style.width=pct+"%";
+    var need=Math.max(0,nxtMin-pts);
+    el("scNxt").textContent=need+" pts para "+LL[nxtName];
+    el("scNote").textContent=need>0?"Acumule "+need+" pontos para desbloquear "+LL[nxtName]+".":"Nível alcançado.";
+  } else {
+    el("scFill").style.width="100%";
+    el("scNxt").textContent="Nível máximo";
+    el("scNote").textContent="Você alcançou Palestrante — o nível mais alto.";
+  }
+  var logEl=el("scLog");
+  logEl.innerHTML=s.log.length
+    ?s.log.map(function(e){return"<div class='log-row'><span class='log-act'>"+e.label+"</span><span class='log-pts'>+"+e.pts+"</span></div>";}).join("")
+    :"<div class='log-mt'>Nenhuma atividade ainda nesta vertical.</div>";
+  el("allTopics").innerHTML=TOPICS.map(function(t){
+    var u=getUser(), b=u?u.levels[t]:"enthusiast";
+    var e=ptsToLvl(store[uid][t].pts), lv=LR[e]>LR[b]?e:b;
+    var r=LR[lv], pct=(r/5)*100, c=LC[lv];
+    var isActive=(t===topic);
+    var rowBg=isActive?" style='background:rgba(0,59,111,0.07)'":" ";
+    return "<div class='all-row'"+rowBg+">"+
+      "<span class='all-rnm'>"+TOPIC_LABELS[t].split(" ")[0]+"</span>"+
+      "<div class='all-trk'><div class='all-fil' style='width:"+pct+"%;background:linear-gradient(90deg,var(--blue),var(--orange))'></div></div>"+
+      "<span class='all-lv' style='color:"+c+"'>"+LL[lv]+"</span>"+
+    "</div>";
+  }).join("");
+}
+
+/* ── GUIDE ── */
+function renderGuide() {
+  var LD={
+    enthusiast:"Leia conteúdo e reaja com Útil ou Questionar.",
+    distributor:"Repasse artigos dentro do SBOC/Kodes e compartilhe fora da plataforma.",
+    commentator:"Escreva comentários em qualquer conteúdo, com seu selo de autoridade verificada.",
+    author:"Publique artigos completos e respostas. Também comente em qualquer conteúdo.",
+    speaker:"Acesso editorial completo — debates, séries, controles editoriais e publicação."
+  };
+  var LA={
+    enthusiast: [{n:"Útil ou Questionar",p:2}],
+    distributor:[{n:"Repassar dentro do SBOC/Kodes",p:5},{n:"Compartilhar fora da plataforma",p:8},{n:"Adicionar ao digest",p:3}],
+    commentator:[{n:"Publicar um comentário",p:15},{n:"Comentário recebe Útil",p:3}],
+    author:     [{n:"Publicar um artigo",p:40},{n:"Publicar uma resposta",p:30},{n:"Publicar um comentário",p:15}],
+    speaker:    [{n:"Publicar um artigo",p:40},{n:"Publicar uma resposta",p:30},{n:"Publicar um comentário",p:15},{n:"Convidar para Debate",p:25},{n:"Destacar conteúdo",p:15},{n:"Programar uma série",p:50}]
+  };
+  el("guidePg").innerHTML=LN.map(function(lvl){
+    var col=LC[lvl], rank=LR[lvl], ul=rank===1?"Nível inicial":LU[lvl].toLocaleString()+" pts";
+    return "<div class='gcard'>"+
+      "<div class='gc-hdr'><div class='gc-pip' style='background:"+col+"'></div>"+
+        "<span class='gc-nm' style='color:"+col+"'>"+LL[lvl]+"</span>"+
+        "<span class='gc-ul'>"+ul+"</span></div>"+
+      "<div class='gc-body'><p class='gc-desc'>"+LD[lvl]+"</p>"+
+        LA[lvl].map(function(a){return"<div class='gc-act'><span class='gc-anm'>"+a.n+"</span><span class='gc-apt'>+"+a.p+" pts</span></div>";}).join("")+
+      "</div></div>";
+  }).join("");
+}
+
+/* ══════════════════════════════════════
+   INIT — all handlers via addEventListener
+   No inline onclick
+══════════════════════════════════════ */
+window.onload = function() {
+  initStore();
+  updateTopbar();
+  updateDrawer();
+  renderFeed();
+  renderGuide();
+
+  /* Dismiss splash */
+  setTimeout(function(){
+    var s=document.getElementById("splash");
+    if (s) s.style.display="none";
+  }, 1900);
+
+  /* Burger */
+  var burger=el("burger");
+  if (burger) burger.addEventListener("click", toggleDrawer);
+
+  /* Drawer mask */
+  var drwMask=el("drwMask");
+  if (drwMask) drwMask.addEventListener("click", closeDrawer);
+
+  /* Drawer topic buttons */
+  TOPICS.forEach(function(t) {
+    var btn=el("di-"+t);
+    if (btn) btn.addEventListener("click",(function(tp){return function(){pickTopic(tp);};})(t));
+  });
+
+  /* User avatar → open sheet */
+  var tAv=el("tAv");
+  if (tAv) tAv.addEventListener("click", openSheet);
+
+  /* Sheet handle & mask */
+  var shHandle=el("shHandle"), shMask=el("shMask");
+  if (shHandle) shHandle.addEventListener("click", closeSheet);
+  if (shMask)   shMask.addEventListener("click",   closeSheet);
+
+  /* User switcher rows */
+  USERS.forEach(function(u) {
+    var row=el("su-"+u.id);
+    if (row) row.addEventListener("click",(function(id){return function(){pickUser(id);};})(u.id));
+  });
+
+  /* Level-up close */
+  var luBtn=el("luBtn");
+  if (luBtn) luBtn.addEventListener("click", closeLU);
+
+  /* Bottom nav */
+  var btnFeed=el("bn-feed"), btnScore=el("bn-score"), btnGuide=el("bn-guide");
+  if (btnFeed)  btnFeed.addEventListener("click",  function(){goScr("feed");});
+  if (btnScore) btnScore.addEventListener("click", function(){goScr("score");});
+  if (btnGuide) btnGuide.addEventListener("click", function(){goScr("guide");});
+
+  /* Article cards */
+  document.querySelectorAll(".card-titles").forEach(function(titles) {
+    var card=titles.parentNode;
+    var iz=card ? card.querySelector(".iz-wrap") : null;
+    var aid=iz ? iz.dataset.id : null;
+    if (aid) titles.addEventListener("click",function(){toggleCard(aid);});
+  });
+  document.querySelectorAll(".c-rbtn").forEach(function(btn) {
+    var aid=btn.id.replace("rb-","");
+    if (aid) btn.addEventListener("click",function(e){e.stopPropagation();toggleCard(aid);});
+  });
+};
+</script>
+</body>
+</html>
